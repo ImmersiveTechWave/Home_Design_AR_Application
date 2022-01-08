@@ -6,6 +6,8 @@ namespace AF
 {
     public class CreateWalls : MonoBehaviour
     {
+        private const float WALL_LENGHT = 4f;
+
         private GameObject startWallPrefabe;
         private GameObject endWallPrefabe;
         private GameObject previewWallPrefabe;
@@ -13,13 +15,13 @@ namespace AF
         private GameObject startWallGO;
         private GameObject endWallGO;
         private GameObject previewWallGO;
-        // private SimpleWallController simpleWallGO;
+        private InputManager inputManager;
 
         private bool isCreating;
 
-
         private void Start()
         {
+            inputManager = FindObjectOfType<InputManager>();
             startWallPrefabe = Resources.Load<GameObject>(WallPaths.START_WALL_PATH);
             endWallPrefabe = Resources.Load<GameObject>(WallPaths.END_WALL_PATH);
             simpleWallPrefabe = Resources.Load<SimpleWallController>(WallPaths.SIMPLE_WALL_PATH);
@@ -36,11 +38,11 @@ namespace AF
 
         private void DrawWall()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !inputManager.IsPointerOverUIElement())
             {
                 SetStart();
             }
-            else if (Input.GetMouseButtonUp(0))
+            else if (isCreating == true && Input.GetMouseButtonUp(0) && !inputManager.IsPointerOverUIElement())
             {
                 SetEnd();
             }
@@ -56,7 +58,7 @@ namespace AF
         IEnumerator CreateWalll()
         {
             previewWallGO = Instantiate(previewWallPrefabe, startWallPrefabe.transform.position, Quaternion.identity);
-            var hit = GetWorldPoint();
+            var hit = inputManager.GetWorldPoint();
             var spherePrefabe = Resources.Load<BestMarginController>(WallPaths.BEST_MARGIN_SPHERE);
             var sphereGO = Instantiate(spherePrefabe, hit, Quaternion.identity);
 
@@ -83,16 +85,16 @@ namespace AF
         private void SetEnd()
         {
             isCreating = false;
-            endWallGO.transform.position = GetWorldPoint();
+            endWallGO.transform.position = inputManager.GetWorldPoint();
             var distance = Vector3.Distance(startWallGO.transform.position, endWallGO.transform.position);
 
-            var numberOfWalls = (int)(distance / 2);
-            var difference = distance - numberOfWalls * 2;
+            var numberOfWalls = (int)(distance / WALL_LENGHT);
+            var difference = distance - numberOfWalls * WALL_LENGHT;
 
             var leftWallPosition = startWallGO.transform.position + previewWallGO.transform.forward * (difference / 4);
 
             var leftWall = Instantiate(simpleWallPrefabe, leftWallPosition, previewWallGO.transform.rotation);
-            leftWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / 4);
+            leftWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / 8);
 
             Vector3 startPosition;
             var wallForward = previewWallGO.transform.forward;
@@ -100,30 +102,25 @@ namespace AF
 
             for (int i = 0; i < numberOfWalls; i++)
             {
-                startPosition = wallForward * (2 * i + difference / 2 + 1) + startWallPosition;
+                startPosition = wallForward * (2 * 2 * i + difference / 2 + 2) + startWallPosition;
                 Instantiate(simpleWallPrefabe, startPosition, previewWallGO.transform.rotation);
             }
 
-            var rightWallPosition = wallForward * (difference / 2 + difference / 4 + 2 * numberOfWalls) + startWallPosition;
+            var rightWallPosition = wallForward * (difference / 2 + difference / 4 + WALL_LENGHT * numberOfWalls) + startWallPosition;
             var rightWall = Instantiate(simpleWallPrefabe, rightWallPosition, previewWallGO.transform.rotation);
-            rightWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / 4);
+            rightWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / 8);
 
             Destroy(previewWallGO.gameObject);
         }
 
         private void Create()
         {
-            endWallGO.transform.position = GetWorldPoint();
+            endWallGO.transform.position = inputManager.GetWorldPoint();
             CreateWall();
         }
 
         void CreateWall()
         {
-            var angle = MathUtils.GetAngle(startWallGO.transform.position, endWallGO.transform.position);
-            Debug.Log(MathUtils.RoundNumber(angle, 5));
-
-
-
             startWallGO.transform.LookAt(endWallGO.transform.position);
             endWallGO.transform.LookAt(startWallGO.transform.position);
             var distance = (startWallGO.transform.position - endWallGO.transform.position).magnitude;
@@ -131,17 +128,6 @@ namespace AF
             previewWallGO.transform.position = startWallGO.transform.position + distance / 2 * startWallGO.transform.forward;
             previewWallGO.transform.rotation = startWallGO.transform.rotation;
             previewWallGO.transform.localScale = new Vector3(previewWallGO.transform.localScale.x, previewWallGO.transform.localScale.y, distance);
-        }
-
-        private Vector3 GetWorldPoint()
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                return hit.point;
-            }
-            return Vector3.zero;
         }
     }
 }

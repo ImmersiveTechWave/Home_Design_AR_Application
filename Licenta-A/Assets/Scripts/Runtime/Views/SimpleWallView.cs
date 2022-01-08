@@ -4,7 +4,7 @@ namespace AF
 {
     public class SimpleWallView : MonoBehaviour
     {
-        public GameObject Wall { get; private set; }
+        public GameObject Wall { get; set; }
         public GameObject MarginLeft { get; private set; }
         public GameObject MarginRight { get; private set; }
 
