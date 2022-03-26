@@ -7,6 +7,7 @@
 /[Oo]bj/
 /Assets/AssetStoreTools*
 /[Dd]ebug/
+[Ll]ogs/
 /[Xx]64
 /[Bb]uild/
 /[Bb]uilds/
@@ -43,6 +44,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.log
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -71,20 +73,6 @@ Thumbs.db
 # Merge leftovers
 *.orig.meta
 
-# TSG specific
-Assets/TSG/packages/
-
-d/Library/*
-
-Assets/_TerrainAutoUpgrade/*
-Assets/_TerrainAutoUpgrade.meta
-build_info
-build_info.meta
-
-Assets/StandardAssets/=Ignored/*
-Assets/Standard Assets/=Ignored/*
-Assets/Allegorithmic/Plugins/Substance/Substance Source/Editor/.SourceCache*
-Assets/Visuals/Substances/IGNORE/*
 Logs/*
 
 # Visual Studio Code
