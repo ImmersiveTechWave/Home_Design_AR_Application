@@ -25,13 +25,14 @@ namespace AF
                 var position = App.SelectedWall.View.Wall.transform.position;
                 var rotation = App.SelectedWall.View.Wall.transform.rotation;
                 Destroy(App.SelectedWall.View.Wall.gameObject);
-                var path = "Prefabes/" + text.text.Trim() + "Wall";
+                var path = "Prefabes/" + text.text.Trim();
                 var newWallPrefabe = Resources.Load<GameObject>(path);
 
                 var newWallGo = Instantiate(newWallPrefabe, position, rotation);
                 newWallGo.transform.SetParent(App.SelectedWall.transform);
                 newWallGo.name = "Wall";
                 App.SelectedWall.View.Wall = newWallGo;
+                App.SelectedWall.View.Outline = newWallGo.GetComponent<Outline>() ;
             }
         }
 
