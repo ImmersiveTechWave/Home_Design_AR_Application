@@ -7,6 +7,11 @@ namespace AF
     {
         private List<WallMarginController> posiblePoints = new List<WallMarginController>();
 
+        /// <summary>
+        /// Find the best point from where to start the construction of the wall.
+        /// </summary>
+        /// <param name="startPosition"></param>
+        /// <returns></returns>
         public Vector3 GetBestPoint(Vector3 startPosition)
         {
             var minDistance = float.MaxValue;

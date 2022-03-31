@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace AF
 {
     public static class WallNames
@@ -15,11 +11,11 @@ namespace AF
 
     public static class WallPaths
     {
-        public const string SIMPLE_WALL_PATH = "Prefabes/" + WallNames.SIMPLE_WALL;
-        public const string START_WALL_PATH = "Prefabes/" + WallNames.START_WALL;
-        public const string END_WALL_PATH = "Prefabes/" + WallNames.END_WALL;
-        public const string PREVIEW_WALL_PATH = "Prefabes/" + WallNames.PREVIEW_WALL;
-        public const string DOORWAY_WALL_PATH = "Prefabes/" + WallNames.DOORWAY_WALL;
+        public const string SIMPLE_WALL_PATH = "Prefabes/Walls/" + WallNames.SIMPLE_WALL;
+        public const string START_WALL_PATH = "Prefabes/Walls/" + WallNames.START_WALL;
+        public const string END_WALL_PATH = "Prefabes/Walls/" + WallNames.END_WALL;
+        public const string PREVIEW_WALL_PATH = "Prefabes/Walls/" + WallNames.PREVIEW_WALL;
+        public const string DOORWAY_WALL_PATH = "Prefabes/Walls/" + WallNames.DOORWAY_WALL;
         public const string BEST_MARGIN_SPHERE = "Prefabes/BestMarginSphere";
     }
 
