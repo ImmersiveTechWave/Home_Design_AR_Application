@@ -54,7 +54,7 @@ namespace AF
 			if (Input.GetMouseButtonDown(0) && !inputManager.IsPointerOverUIElement())
 			{
 				startWallGO = Instantiate(startWallResource, Vector3.zero, Quaternion.identity);
-				endWallGO = Instantiate(endWallResource, Vector3.zero, Quaternion.identity);
+				endWallGO = Instantiate(endWallResource, Vector3.zero + new Vector3(1f, 0f, 1f), Quaternion.identity);
 				SetStartWallPosition();
 			}
 			else if (isCreating)
@@ -122,7 +122,8 @@ namespace AF
 
 		private void CreatePreviewWalls()
 		{
-			endWallGO.transform.position = inputManager.GetWorldPoint();
+			var endWallPosition = inputManager.GetWorldPoint();
+			endWallGO.transform.position = endWallPosition == startWallGO.transform.position ? endWallPosition + new Vector3(0.1f, 0, 0.1f) : endWallPosition;
 
 			startWallGO.transform.LookAt(endWallGO.transform.position);
 			endWallGO.transform.LookAt(startWallGO.transform.position);
