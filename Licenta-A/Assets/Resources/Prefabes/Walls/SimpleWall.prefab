@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 154441477914876497}
   - component: {fileID: 4595056936315499065}
   - component: {fileID: 1231445071324977690}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: MarginLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 8238923666495559669}
   - component: {fileID: 7795181180733386775}
   - component: {fileID: 6134788676843666466}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: MarginRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 7978270305861243945}
   - component: {fileID: 4315770619300729778}
   - component: {fileID: 7010798219396603104}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: SimpleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,6 +291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679681075361438029, guid: 7f9e3090f5be82f468785f6d9e553bb0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3349538002403656695, guid: 7f9e3090f5be82f468785f6d9e553bb0,
         type: 3}
