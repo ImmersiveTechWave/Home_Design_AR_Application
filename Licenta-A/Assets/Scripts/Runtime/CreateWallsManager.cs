@@ -73,7 +73,7 @@ namespace AF
 		private void SetStartWallPosition()
 		{
 			previewWallGO = Instantiate(previewWallResource, startWallResource.transform.position, Quaternion.identity);
-			var hit = inputManager.GetWorldPoint();
+			var hit = GetBestMarginPosition(inputManager.GetWorldPoint());
 			isCreating = true;
 			startWallGO.transform.position = hit;
 		}
@@ -81,7 +81,7 @@ namespace AF
 		private void CreateWall()
 		{
 			isCreating = false;
-			endWallGO.transform.position = inputManager.GetWorldPoint();
+			endWallGO.transform.position = GetBestMarginPosition(inputManager.GetWorldPoint());
 
 			// Calculate the numbers of completed walls
 			var distance = Vector3.Distance(startWallGO.transform.position, endWallGO.transform.position);
@@ -122,7 +122,7 @@ namespace AF
 
 		private void CreatePreviewWalls()
 		{
-			var endWallPosition = inputManager.GetWorldPoint();
+			var endWallPosition = GetBestMarginPosition(inputManager.GetWorldPoint());
 			endWallGO.transform.position = endWallPosition == startWallGO.transform.position ? endWallPosition + new Vector3(0.1f, 0, 0.1f) : endWallPosition;
 
 			startWallGO.transform.LookAt(endWallGO.transform.position);
@@ -132,6 +132,29 @@ namespace AF
 			previewWallGO.transform.position = startWallGO.transform.position + distance / 2 * startWallGO.transform.forward;
 			previewWallGO.transform.rotation = startWallGO.transform.rotation;
 			previewWallGO.transform.localScale = new Vector3(previewWallGO.transform.localScale.x, previewWallGO.transform.localScale.y, distance);
+		}
+
+		private Vector3 GetBestMarginPosition(Vector3 startPosition)
+		{
+			var hits = Physics.OverlapSphere(startPosition, 1, LayerMask.GetMask(LayersName.WALL));
+			var bestMarginPosition = startPosition;
+			float minSqrDistance = float.MaxValue;
+
+			foreach (var hit in hits)
+			{
+				var margin = hit.GetComponent<WallMarginController>();
+				if (margin != null)
+				{
+					var sqrDistance = (margin.transform.position - startPosition).sqrMagnitude;
+					if (minSqrDistance > sqrDistance)
+					{
+						minSqrDistance = sqrDistance;
+						bestMarginPosition = margin.transform.position;
+					}
+				}
+			}
+			bestMarginPosition.y = startPosition.y;
+			return bestMarginPosition;
 		}
 	}
 }

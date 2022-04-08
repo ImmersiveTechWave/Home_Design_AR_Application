@@ -44,6 +44,10 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	public InputSliderComponent UICostumizeWallImageGInputSlider{ get; protected set; }
 	public InputSliderComponent UICostumizeWallImageBInputSlider{ get; protected set; }
 	public Button UICostumizeWallImageMinimizeButton{ get; protected set; }
+	public Button UITopViewButton{ get; protected set; }
+	public TextMeshProUGUI UITopViewButtonText{ get; protected set; }
+	public Button UIFreeRoamButton{ get; protected set; }
+	public TextMeshProUGUI UIFreeRoamButtonText{ get; protected set; }
 
 	private void Awake()
 	{
@@ -83,6 +87,10 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 		UICostumizeWallImageGInputSlider = transform.Find("CostumizeWallImage/GInputSlider").GetComponent<InputSliderComponent>();
 		UICostumizeWallImageBInputSlider = transform.Find("CostumizeWallImage/BInputSlider").GetComponent<InputSliderComponent>();
 		UICostumizeWallImageMinimizeButton = transform.Find("CostumizeWallImage/MinimizeButton").GetComponent<Button>();
+		UITopViewButton = transform.Find("TopViewButton").GetComponent<Button>();
+		UITopViewButtonText = transform.Find("TopViewButton/Text").GetComponent<TextMeshProUGUI>();
+		UIFreeRoamButton = transform.Find("FreeRoamButton").GetComponent<Button>();
+		UIFreeRoamButtonText = transform.Find("FreeRoamButton/Text").GetComponent<TextMeshProUGUI>();
 	}
 }
 }
