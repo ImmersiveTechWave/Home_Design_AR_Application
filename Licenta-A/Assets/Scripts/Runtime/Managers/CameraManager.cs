@@ -18,6 +18,11 @@ namespace AF
 			ActiveCamera = TopViewCamera;
 		}
 
+		private void Start()
+		{
+			ChangeToTopViewCamera();
+		}
+
 		public void ChangeToTopViewCamera()
 		{
 			ActiveCamera.ExitState();
