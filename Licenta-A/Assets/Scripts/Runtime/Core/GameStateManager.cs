@@ -7,7 +7,7 @@ namespace AF
 {
 	public class GameStateManager : MonoBehaviour
 	{
-		public readonly Type DEFAULT_GAME_STATE = typeof(CreateWallState);
+		public readonly Type DEFAULT_GAME_STATE = typeof(MovementState);
 
 		public static GameStateManager Instance { get { return instance; } }
 
@@ -63,6 +63,7 @@ namespace AF
 
 			// Init with the default state.
 			PushState(gameStateTypes.FirstOrDefault(p => p == DEFAULT_GAME_STATE));
+			SwitchState(DEFAULT_GAME_STATE);
 		}
 
 		public void SwitchState<T>() where T : BaseGameState
@@ -86,6 +87,16 @@ namespace AF
 			gameState.Enter(previousState);
 			CurrentState = type;
 			GameStateChanged?.Invoke(gameState);
+		}
+
+		public bool IsCurrentState<T>() where T : BaseGameState
+		{
+			return IsCurrentState(typeof(T));
+		}
+
+		public bool IsCurrentState(Type state)
+		{
+			return CurrentState == state;
 		}
 
 		private BaseGameState FindState(Type type)

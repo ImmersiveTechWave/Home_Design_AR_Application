@@ -6,13 +6,15 @@ namespace AF
 	{
 		private const float CAMERA_MOVEMENT_SPEED = 10f;
 		private const float CAMERA_ROTATION_SPEED_MULTIPLICATOR = 0.5f;
+		private const float MIN_NEW_POSITION = 2f;
+		private const float MAX_NEW_POSITION = 50f;
 
 		private bool mouseIsDown;
 		private Vector3 startMousePosition = Vector3.zero;
 
 		private void Update()
 		{
-			if (ThisIsTheMainCamera)
+			if (GameStateManager.IsCurrentState<MovementState>() && ThisIsTheMainCamera)
 			{
 				ConsumeUserMovementInput();
 				ConsumeUserRotationInput();
@@ -21,30 +23,33 @@ namespace AF
 
 		private void ConsumeUserMovementInput()
 		{
+			var newPosition = transform.position;
 			if (Input.GetKey(KeyCode.W))
 			{
-				transform.position += transform.forward * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += newPosition * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.S))
 			{
-				transform.position += -transform.forward * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += -newPosition * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.D))
 			{
-				transform.position += transform.right * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += newPosition * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.A))
 			{
-				transform.position += -transform.right * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += -newPosition * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.Q))
 			{
-				transform.position += Vector3.up * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += Vector3.up * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.E))
 			{
-				transform.position += -Vector3.up * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += -Vector3.up * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
+			newPosition.y = Mathf.Clamp(newPosition.y, MIN_NEW_POSITION, MAX_NEW_POSITION);
+			transform.position = newPosition;
 		}
 
 		private void ConsumeUserRotationInput()

@@ -6,21 +6,49 @@ namespace AF.UI
 {
 	public class UIMainScreenScreenController : AFScreen
 	{
-		private UIMainScreenScreenComponents view;
+		public UIMainScreenScreenComponents ScreenView;
+
 		private CameraManager cameraManager;
+		private GameStateManager gameStateManager;
 
 		private void Awake()
 		{
 			base.Awake();
-			view = GetComponent<UIMainScreenScreenComponents>();
+			ScreenView = GetComponent<UIMainScreenScreenComponents>();
 			cameraManager = FindObjectOfType<CameraManager>();
+			gameStateManager = FindObjectOfType<GameStateManager>();
 		}
 
 		private void Start()
 		{
 			AddUIWalls();
-			view.UITopViewButton.onClick.AddListener(ChangeToTopView);
-			view.UIFreeRoamButton.onClick.AddListener(ChangeToFreeRoam);
+			ScreenView.UIMovementButtonsTopViewButton.onClick.AddListener(ChangeToTopView);
+			ScreenView.UIMovementButtonsFreeRoamButton.onClick.AddListener(ChangeToFreeRoam);
+			ScreenView.UIMovementButtonsARButton.onClick.AddListener(ChangeToAR);
+
+			ScreenView.UILeftBarMenuImageCreateWallButton.onClick.AddListener(ChangeToCreateWallState);
+			ScreenView.UILeftBarMenuImageCustomizeColorButton.onClick.AddListener(ChangeToCostumizeWallState);
+			ScreenView.UILeftBarMenuImageMovementButton.onClick.AddListener(ChangeToMovementState);
+		}
+
+		private void ChangeToCostumizeWallState()
+		{
+			gameStateManager.SwitchState<CustomizeWallState>();
+		}
+
+		private void ChangeToMovementState()
+		{
+			gameStateManager.SwitchState<MovementState>();
+		}
+
+		private void ChangeToCreateWallState()
+		{
+			gameStateManager.SwitchState<CreateWallState>();
+		}
+
+		private void ChangeToAR()
+		{
+
 		}
 
 		private void ChangeToTopView()
@@ -39,7 +67,7 @@ namespace AF.UI
 			foreach (var wall in UIWalls)
 			{
 				var wallGO = Instantiate(wall, Vector3.zero, Quaternion.identity);
-				wallGO.transform.SetParent(view.UICostumizeWallScrollViewViewportContent.transform);
+				wallGO.transform.SetParent(ScreenView.UICostumizeWallScrollViewViewportContent.transform);
 			}
 		}
 	}

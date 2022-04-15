@@ -2,14 +2,14 @@ namespace AF
 {
 	public class CreateWallState : BaseGameState
 	{
-		public override void Enter(BaseGameState from)
+		public override void Enter(BaseGameState to)
 		{
-			base.Enter(from);
+			base.Enter(to);
 		}
 
-		public override void Exit(BaseGameState to)
+		public override void Exit(BaseGameState from)
 		{
-			base.Exit(to);
+			base.Exit(from);
 		}
 	}
 }

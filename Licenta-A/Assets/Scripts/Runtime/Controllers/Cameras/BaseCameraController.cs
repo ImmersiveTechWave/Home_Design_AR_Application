@@ -5,7 +5,13 @@ namespace AF
 	public abstract class BaseCameraController : MonoBehaviour
 	{
 		public Camera BaseCamera { get; private set; }
-		public bool ThisIsTheMainCamera;
+		public bool ThisIsTheMainCamera { get; set; }
+		public GameStateManager GameStateManager { get; private set; }
+
+		private void Awake()
+		{
+			GameStateManager = FindObjectOfType<GameStateManager>();
+		}
 
 		private void Start()
 		{
