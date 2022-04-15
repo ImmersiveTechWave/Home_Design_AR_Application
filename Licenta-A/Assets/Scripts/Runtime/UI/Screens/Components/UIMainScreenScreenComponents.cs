@@ -11,10 +11,12 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	public Image UILeftBarMenuImage{ get; protected set; }
 	public Button UILeftBarMenuImageMenuButton{ get; protected set; }
 	public Image UILeftBarMenuImageUpBarImage{ get; protected set; }
-	public Button UILeftBarMenuImageCostumizeWallButton{ get; protected set; }
-	public TextMeshProUGUI UILeftBarMenuImageCostumizeWallButtonCostumizeWallText{ get; protected set; }
-	public Button UILeftBarMenuImageCostumizeColorButton{ get; protected set; }
-	public TextMeshProUGUI UILeftBarMenuImageCostumizeColorButtonCostumizeColorText{ get; protected set; }
+	public Button UILeftBarMenuImageCreateWallButton{ get; protected set; }
+	public TextMeshProUGUI UILeftBarMenuImageCreateWallButtonCreateWallText{ get; protected set; }
+	public Button UILeftBarMenuImageCustomizeColorButton{ get; protected set; }
+	public TextMeshProUGUI UILeftBarMenuImageCustomizeColorButtonCustomizeColorText{ get; protected set; }
+	public Button UILeftBarMenuImageMovementButton{ get; protected set; }
+	public TextMeshProUGUI UILeftBarMenuImageMovementButtonMovementText{ get; protected set; }
 	public ScrollRect UICostumizeWallScrollView{ get; protected set; }
 	public Image UICostumizeWallScrollViewViewport{ get; protected set; }
 	public RectTransform UICostumizeWallScrollViewViewportContent{ get; protected set; }
@@ -44,20 +46,25 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	public InputSliderComponent UICostumizeWallImageGInputSlider{ get; protected set; }
 	public InputSliderComponent UICostumizeWallImageBInputSlider{ get; protected set; }
 	public Button UICostumizeWallImageMinimizeButton{ get; protected set; }
-	public Button UITopViewButton{ get; protected set; }
-	public TextMeshProUGUI UITopViewButtonText{ get; protected set; }
-	public Button UIFreeRoamButton{ get; protected set; }
-	public TextMeshProUGUI UIFreeRoamButtonText{ get; protected set; }
+	public RectTransform UIMovementButtons{ get; protected set; }
+	public Button UIMovementButtonsTopViewButton{ get; protected set; }
+	public TextMeshProUGUI UIMovementButtonsTopViewButtonText{ get; protected set; }
+	public Button UIMovementButtonsFreeRoamButton{ get; protected set; }
+	public TextMeshProUGUI UIMovementButtonsFreeRoamButtonText{ get; protected set; }
+	public Button UIMovementButtonsARButton{ get; protected set; }
+	public TextMeshProUGUI UIMovementButtonsARButtonText{ get; protected set; }
 
 	private void Awake()
 	{
 		UILeftBarMenuImage = transform.Find("LeftBarMenuImage").GetComponent<Image>();
 		UILeftBarMenuImageMenuButton = transform.Find("LeftBarMenuImage/MenuButton").GetComponent<Button>();
 		UILeftBarMenuImageUpBarImage = transform.Find("LeftBarMenuImage/UpBarImage").GetComponent<Image>();
-		UILeftBarMenuImageCostumizeWallButton = transform.Find("LeftBarMenuImage/CostumizeWallButton").GetComponent<Button>();
-		UILeftBarMenuImageCostumizeWallButtonCostumizeWallText = transform.Find("LeftBarMenuImage/CostumizeWallButton/CostumizeWallText").GetComponent<TextMeshProUGUI>();
-		UILeftBarMenuImageCostumizeColorButton = transform.Find("LeftBarMenuImage/CostumizeColorButton").GetComponent<Button>();
-		UILeftBarMenuImageCostumizeColorButtonCostumizeColorText = transform.Find("LeftBarMenuImage/CostumizeColorButton/CostumizeColorText").GetComponent<TextMeshProUGUI>();
+		UILeftBarMenuImageCreateWallButton = transform.Find("LeftBarMenuImage/CreateWallButton").GetComponent<Button>();
+		UILeftBarMenuImageCreateWallButtonCreateWallText = transform.Find("LeftBarMenuImage/CreateWallButton/CreateWallText").GetComponent<TextMeshProUGUI>();
+		UILeftBarMenuImageCustomizeColorButton = transform.Find("LeftBarMenuImage/CustomizeColorButton").GetComponent<Button>();
+		UILeftBarMenuImageCustomizeColorButtonCustomizeColorText = transform.Find("LeftBarMenuImage/CustomizeColorButton/CustomizeColorText").GetComponent<TextMeshProUGUI>();
+		UILeftBarMenuImageMovementButton = transform.Find("LeftBarMenuImage/MovementButton").GetComponent<Button>();
+		UILeftBarMenuImageMovementButtonMovementText = transform.Find("LeftBarMenuImage/MovementButton/MovementText").GetComponent<TextMeshProUGUI>();
 		UICostumizeWallScrollView = transform.Find("CostumizeWallScrollView").GetComponent<ScrollRect>();
 		UICostumizeWallScrollViewViewport = transform.Find("CostumizeWallScrollView/Viewport").GetComponent<Image>();
 		UICostumizeWallScrollViewViewportContent = transform.Find("CostumizeWallScrollView/Viewport/Content").GetComponent<RectTransform>();
@@ -87,10 +94,13 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 		UICostumizeWallImageGInputSlider = transform.Find("CostumizeWallImage/GInputSlider").GetComponent<InputSliderComponent>();
 		UICostumizeWallImageBInputSlider = transform.Find("CostumizeWallImage/BInputSlider").GetComponent<InputSliderComponent>();
 		UICostumizeWallImageMinimizeButton = transform.Find("CostumizeWallImage/MinimizeButton").GetComponent<Button>();
-		UITopViewButton = transform.Find("TopViewButton").GetComponent<Button>();
-		UITopViewButtonText = transform.Find("TopViewButton/Text").GetComponent<TextMeshProUGUI>();
-		UIFreeRoamButton = transform.Find("FreeRoamButton").GetComponent<Button>();
-		UIFreeRoamButtonText = transform.Find("FreeRoamButton/Text").GetComponent<TextMeshProUGUI>();
+		UIMovementButtons = transform.Find("MovementButtons").GetComponent<RectTransform>();
+		UIMovementButtonsTopViewButton = transform.Find("MovementButtons/TopViewButton").GetComponent<Button>();
+		UIMovementButtonsTopViewButtonText = transform.Find("MovementButtons/TopViewButton/Text").GetComponent<TextMeshProUGUI>();
+		UIMovementButtonsFreeRoamButton = transform.Find("MovementButtons/FreeRoamButton").GetComponent<Button>();
+		UIMovementButtonsFreeRoamButtonText = transform.Find("MovementButtons/FreeRoamButton/Text").GetComponent<TextMeshProUGUI>();
+		UIMovementButtonsARButton = transform.Find("MovementButtons/ARButton").GetComponent<Button>();
+		UIMovementButtonsARButtonText = transform.Find("MovementButtons/ARButton/Text").GetComponent<TextMeshProUGUI>();
 	}
 }
 }

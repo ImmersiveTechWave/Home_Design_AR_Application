@@ -10,6 +10,7 @@ namespace AF
 		// Managers
 		private InputManager inputManager;
 		private WallsManager wallsManager;
+		private GameStateManager gameStateManager;
 
 		// Resources
 		private GameObject startWallResource;
@@ -34,6 +35,7 @@ namespace AF
 		{
 			inputManager = FindObjectOfType<InputManager>();
 			wallsManager = FindObjectOfType<WallsManager>();
+			gameStateManager = FindObjectOfType<GameStateManager>();
 		}
 
 		private void InitializeResources()
@@ -46,7 +48,10 @@ namespace AF
 
 		private void Update()
 		{
-			DrawWall();
+			if (gameStateManager.IsCurrentState<CreateWallState>())
+			{
+				DrawWall();
+			}
 		}
 
 		private void DrawWall()

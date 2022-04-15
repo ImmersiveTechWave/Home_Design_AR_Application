@@ -6,7 +6,7 @@ namespace AF.UI
 	{
 		public ScreenManager ScreenManager { get; set; }
 
-		protected void Awake()
+		virtual public void Awake()
 		{
 			ScreenManager = FindObjectOfType<ScreenManager>();
 		}

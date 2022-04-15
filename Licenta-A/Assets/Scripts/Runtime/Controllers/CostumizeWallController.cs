@@ -36,7 +36,7 @@ namespace AF
 
         private void OnDestroy()
         {
-            button.onClick.RemoveAllListeners();
+            button?.onClick.RemoveAllListeners();
         }
     }
 }
