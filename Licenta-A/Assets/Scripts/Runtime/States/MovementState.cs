@@ -1,33 +1,27 @@
-using AF.UI;
+using UnityEngine;
 
 namespace AF
 {
 	public class MovementState : BaseGameState
 	{
-		private UIMainScreenScreenController mainScreen;
-
-		private void Awake()
-		{
-			mainScreen = FindObjectOfType<UIMainScreenScreenController>();
-		}
-
 		public override void Enter(BaseGameState to)
 		{
 			base.Enter(to);
-			SetMovementButtonState(true);
+			SetButtonsTextColor(ColorUtils.BLUE_COLOR);
 		}
 
 		public override void Exit(BaseGameState from)
 		{
 			base.Exit(from);
-			SetMovementButtonState(false);
+			SetButtonsTextColor(ColorUtils.WHITE_COLOR);
 		}
 
-		private void SetMovementButtonState(bool state)
+		private void SetButtonsTextColor(Color32 color)
 		{
-			mainScreen.ScreenView?.UIMovementButtonsFreeRoamButton.gameObject.SetActive(state);
-			mainScreen.ScreenView?.UIMovementButtonsTopViewButton.gameObject.SetActive(state);
-			mainScreen.ScreenView?.UIMovementButtonsARButton.gameObject.SetActive(state);
+			if (MainScreen.ScreenView != null)
+			{
+				MainScreen.ScreenView.UILeftBarMenuImageMovementButtonText.color = color;
+			}
 		}
 	}
 }

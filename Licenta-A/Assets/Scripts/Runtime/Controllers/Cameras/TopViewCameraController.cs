@@ -55,11 +55,21 @@ namespace AF
 		public override void EnterState()
 		{
 			base.EnterState();
+			SetButtonsTextColor(ColorUtils.BLUE_COLOR);
 		}
 
 		public override void ExitState()
 		{
 			base.ExitState();
+			SetButtonsTextColor(ColorUtils.WHITE_COLOR);
+		}
+
+		private void SetButtonsTextColor(Color32 color)
+		{
+			if (MainScreen.ScreenView != null)
+			{
+				MainScreen.ScreenView.UIMovementButtonsTopViewButtonText.color = color;
+			}
 		}
 	}
 }

@@ -10,13 +10,16 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 {
 	public Image UILeftBarMenuImage{ get; protected set; }
 	public Button UILeftBarMenuImageMenuButton{ get; protected set; }
-	public Image UILeftBarMenuImageUpBarImage{ get; protected set; }
-	public Button UILeftBarMenuImageCreateWallButton{ get; protected set; }
-	public TextMeshProUGUI UILeftBarMenuImageCreateWallButtonCreateWallText{ get; protected set; }
-	public Button UILeftBarMenuImageCustomizeColorButton{ get; protected set; }
-	public TextMeshProUGUI UILeftBarMenuImageCustomizeColorButtonCustomizeColorText{ get; protected set; }
 	public Button UILeftBarMenuImageMovementButton{ get; protected set; }
-	public TextMeshProUGUI UILeftBarMenuImageMovementButtonMovementText{ get; protected set; }
+	public TextMeshProUGUI UILeftBarMenuImageMovementButtonText{ get; protected set; }
+	public Button UILeftBarMenuImageCreateWallButton{ get; protected set; }
+	public TextMeshProUGUI UILeftBarMenuImageCreateWallButtonText{ get; protected set; }
+	public Button UILeftBarMenuImageEditWallButton{ get; protected set; }
+	public TextMeshProUGUI UILeftBarMenuImageEditWallButtonText{ get; protected set; }
+	public Button UILeftBarMenuImagePartialWallButton{ get; protected set; }
+	public TextMeshProUGUI UILeftBarMenuImagePartialWallButtonText{ get; protected set; }
+	public Button UILeftBarMenuImageEntireWallButton{ get; protected set; }
+	public TextMeshProUGUI UILeftBarMenuImageEntireWallButtonText{ get; protected set; }
 	public ScrollRect UICostumizeWallScrollView{ get; protected set; }
 	public Image UICostumizeWallScrollViewViewport{ get; protected set; }
 	public RectTransform UICostumizeWallScrollViewViewportContent{ get; protected set; }
@@ -58,13 +61,16 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	{
 		UILeftBarMenuImage = transform.Find("LeftBarMenuImage").GetComponent<Image>();
 		UILeftBarMenuImageMenuButton = transform.Find("LeftBarMenuImage/MenuButton").GetComponent<Button>();
-		UILeftBarMenuImageUpBarImage = transform.Find("LeftBarMenuImage/UpBarImage").GetComponent<Image>();
-		UILeftBarMenuImageCreateWallButton = transform.Find("LeftBarMenuImage/CreateWallButton").GetComponent<Button>();
-		UILeftBarMenuImageCreateWallButtonCreateWallText = transform.Find("LeftBarMenuImage/CreateWallButton/CreateWallText").GetComponent<TextMeshProUGUI>();
-		UILeftBarMenuImageCustomizeColorButton = transform.Find("LeftBarMenuImage/CustomizeColorButton").GetComponent<Button>();
-		UILeftBarMenuImageCustomizeColorButtonCustomizeColorText = transform.Find("LeftBarMenuImage/CustomizeColorButton/CustomizeColorText").GetComponent<TextMeshProUGUI>();
 		UILeftBarMenuImageMovementButton = transform.Find("LeftBarMenuImage/MovementButton").GetComponent<Button>();
-		UILeftBarMenuImageMovementButtonMovementText = transform.Find("LeftBarMenuImage/MovementButton/MovementText").GetComponent<TextMeshProUGUI>();
+		UILeftBarMenuImageMovementButtonText = transform.Find("LeftBarMenuImage/MovementButton/Text").GetComponent<TextMeshProUGUI>();
+		UILeftBarMenuImageCreateWallButton = transform.Find("LeftBarMenuImage/CreateWallButton").GetComponent<Button>();
+		UILeftBarMenuImageCreateWallButtonText = transform.Find("LeftBarMenuImage/CreateWallButton/Text").GetComponent<TextMeshProUGUI>();
+		UILeftBarMenuImageEditWallButton = transform.Find("LeftBarMenuImage/EditWallButton").GetComponent<Button>();
+		UILeftBarMenuImageEditWallButtonText = transform.Find("LeftBarMenuImage/EditWallButton/Text").GetComponent<TextMeshProUGUI>();
+		UILeftBarMenuImagePartialWallButton = transform.Find("LeftBarMenuImage/PartialWallButton").GetComponent<Button>();
+		UILeftBarMenuImagePartialWallButtonText = transform.Find("LeftBarMenuImage/PartialWallButton/Text").GetComponent<TextMeshProUGUI>();
+		UILeftBarMenuImageEntireWallButton = transform.Find("LeftBarMenuImage/EntireWallButton").GetComponent<Button>();
+		UILeftBarMenuImageEntireWallButtonText = transform.Find("LeftBarMenuImage/EntireWallButton/Text").GetComponent<TextMeshProUGUI>();
 		UICostumizeWallScrollView = transform.Find("CostumizeWallScrollView").GetComponent<ScrollRect>();
 		UICostumizeWallScrollViewViewport = transform.Find("CostumizeWallScrollView/Viewport").GetComponent<Image>();
 		UICostumizeWallScrollViewViewportContent = transform.Find("CostumizeWallScrollView/Viewport/Content").GetComponent<RectTransform>();
