@@ -4,39 +4,39 @@ using UnityEngine.UI;
 
 namespace AF
 {
-    public class CostumizeWallController : MonoBehaviour
-    {
-        private Button button;
-        private TextMeshProUGUI text;
+	public class CostumizeWallController : MonoBehaviour
+	{
+		private Button button;
+		private TextMeshProUGUI text;
 
-        private void Start()
-        {
-            button = transform.GetComponentInChildren<Button>();
-            text = transform.GetComponentInChildren<TextMeshProUGUI>();
-            button.onClick.AddListener(ChangeWall);
-        }
+		private void Start()
+		{
+			button = transform.GetComponentInChildren<Button>();
+			text = transform.GetComponentInChildren<TextMeshProUGUI>();
+			button.onClick.AddListener(ChangeWall);
+		}
 
-        private void ChangeWall()
-        {
-            if (transform.localScale == Vector3.one)
-            {
-                var position = App.SelectedWall.View.Wall.transform.position;
-                var rotation = App.SelectedWall.View.Wall.transform.rotation;
-                Destroy(App.SelectedWall.View.Wall.gameObject);
-                var path = "Prefabes/" + text.text.Trim();
-                var newWallPrefabe = Resources.Load<GameObject>(path);
+		private void ChangeWall()
+		{
+			if (App.SelectedPartialWall != null && transform.localScale == Vector3.one)
+			{
+				var position = App.SelectedPartialWall.View.Wall.transform.position;
+				var rotation = App.SelectedPartialWall.View.Wall.transform.rotation;
+				Destroy(App.SelectedPartialWall.View.Wall.gameObject);
+				var path = "Prefabes/Walls/" + text.text.Trim();
+				var newWallPrefabe = Resources.Load<GameObject>(path);
 
-                var newWallGo = Instantiate(newWallPrefabe, position, rotation);
-                newWallGo.transform.SetParent(App.SelectedWall.transform);
-                newWallGo.name = "Wall";
-                App.SelectedWall.View.Wall = newWallGo;
-                App.SelectedWall.View.Outline = newWallGo.GetComponent<Outline>() ;
-            }
-        }
+				var newWallGo = Instantiate(newWallPrefabe, position, rotation);
+				newWallGo.transform.SetParent(App.SelectedPartialWall.transform);
+				newWallGo.name = "Wall";
+				App.SelectedPartialWall.View.Wall = newWallGo;
+				App.SelectedPartialWall.View.SelectObject = App.SelectedPartialWall.View.transform.Find("SelectedBox").GetComponent<SelectObject>();
+			}
+		}
 
-        private void OnDestroy()
-        {
-            button?.onClick.RemoveAllListeners();
-        }
-    }
+		private void OnDestroy()
+		{
+			button?.onClick.RemoveAllListeners();
+		}
+	}
 }

@@ -16,7 +16,7 @@ namespace AF
 		private GameObject startWallResource;
 		private GameObject endWallResource;
 		private GameObject previewWallResource;
-		private SimpleWallController simpleWallResource;
+		private PartialWallController partialWallResource;
 
 		// Game Objects
 		private GameObject startWallGO;
@@ -42,7 +42,7 @@ namespace AF
 		{
 			startWallResource = Resources.Load<GameObject>(WallPaths.START_WALL_PATH);
 			endWallResource = Resources.Load<GameObject>(WallPaths.END_WALL_PATH);
-			simpleWallResource = Resources.Load<SimpleWallController>(WallPaths.SIMPLE_WALL_PATH);
+			partialWallResource = Resources.Load<PartialWallController>(WallPaths.PARTIAL_WALL_PATH);
 			previewWallResource = Resources.Load<GameObject>(WallPaths.PREVIEW_WALL_PATH);
 		}
 
@@ -98,7 +98,7 @@ namespace AF
 
 			// Create the Left Wall
 			var leftWallPosition = startWallGO.transform.position + previewWallGO.transform.forward * (difference / 4);
-			var leftWall = Instantiate(simpleWallResource, leftWallPosition, previewWallGO.transform.rotation);
+			var leftWall = Instantiate(partialWallResource, leftWallPosition, previewWallGO.transform.rotation);
 			leftWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / 8);
 			wallController.AddNewSimpleWalls(leftWall);
 
@@ -108,13 +108,13 @@ namespace AF
 			for (int wallNumber = 0; wallNumber < numberOfWalls; wallNumber++)
 			{
 				var startPosition = wallForward * (2 * 2 * wallNumber + difference / 2 + 2) + startWallPosition;
-				var wall = Instantiate(simpleWallResource, startPosition, previewWallGO.transform.rotation);
+				var wall = Instantiate(partialWallResource, startPosition, previewWallGO.transform.rotation);
 				wallController.AddNewSimpleWalls(wall);
 			}
 
 			// Create the Right Wall
 			var rightWallPosition = wallForward * (difference / 2 + difference / 4 + WALL_LENGHT * numberOfWalls) + startWallPosition;
-			var rightWall = Instantiate(simpleWallResource, rightWallPosition, previewWallGO.transform.rotation);
+			var rightWall = Instantiate(partialWallResource, rightWallPosition, previewWallGO.transform.rotation);
 			rightWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / 8);
 			wallController.AddNewSimpleWalls(rightWall);
 

@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Forcefield_Shader Red 1
+  m_Shader: {fileID: 4800000, guid: ec36b41423c6b2e4baac29a1296e4b60, type: 3}
+  m_ShaderKeywords: _USE_TRIPLANAR_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionNormal:
+        m_Texture: {fileID: 2800000, guid: b31676a3103837945920ebc3cff4e14e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionSample:
+        m_Texture: {fileID: 2800000, guid: 2d7c4b86a64c25b4c84dfc1a53568e57, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: a7b3873d91f47df45a85c9e45e487e07, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: 736514e56b3cfa34ba18275b2655e12e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: b886f7561ee6f8141ade1eca59d78f70, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 2800000, guid: 79d5a0e9041e8c04cbb039aa11a73342, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample3:
+        m_Texture: {fileID: 2800000, guid: 9c79340e1a1054275ba04070a27de306, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_Triplanar:
+        m_Texture: {fileID: 2800000, guid: 736514e56b3cfa34ba18275b2655e12e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TopTexture0:
+        m_Texture: {fileID: 2800000, guid: b886f7561ee6f8141ade1eca59d78f70, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _AlphaCutoff: 0.5
+    - _BaseColorIntensity: 20
+    - _Blend: 0
+    - _BumpScale: 1
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DepthFadeDistance: 0.4
+    - _DepthFadeDistance11: 0.2
+    - _DistortionAmount: 0.0055
+    - _DistortionTimeScale: 0.05
+    - _DstBlend: 0
+    - _EmissionIntensity: 3
+    - _EnergyIntensity: 2
+    - _EnvironmentReflections: 1
+    - _Float3: 0.5
+    - _Forcefield: 0
+    - _FresnelBias: 0
+    - _FresnelPower: 3.08
+    - _FresnelPower2: 2.32
+    - _FresnelScale: 0.28
+    - _FresnelScale2: 1.99
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _InnerFresnel: 0.008
+    - _IntersectionDepth: 0.79
+    - _IntersectionIntensity: 2.3
+    - _Metallic: 0
+    - _MotionSpeed: 1
+    - _OcclusionStrength: 1
+    - _OuterFresnel: 1
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _TimeScale: 0.2
+    - _TimeScale2: 1
+    - _TriplanarFalloff: 5.8
+    - _TriplanarPanningSpeed: 0.127
+    - _Use_Triplanar: 1
+    - _Visibility: 1
+    - _VoronoiOverlay: 0
+    - _VoronoiSpeed: 1
+    - _VoroonoiIntensity: 2
+    - _WorkflowMode: 1
+    - _ZWrite: 1
+    m_Colors:
+    - _BaseColor: {r: 0, g: 0.3476925, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DistortionColorMul: {r: 0.43867904, g: 0.5749998, b: 1, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EnergyColor: {r: 0.7195621, g: 0.8256622, b: 0.9245283, a: 0}
+    - _ForcefieldTint: {r: 1, g: 1, b: 1, a: 1}
+    - _ForcefieldTint2: {r: 1, g: 0.5518868, b: 0.5518868, a: 0}
+    - _FresnelColor: {r: 0.05188679, g: 0.51858693, b: 1, a: 0}
+    - _FresnelColor1: {r: 0.05188679, g: 0.51858693, b: 1, a: 0}
+    - _IntersectionColor: {r: 0.6062656, g: 0.7439717, b: 0.9811321, a: 1}
+    - _IntersectionColor11: {r: 0.43382347, g: 0.43772817, b: 1, a: 0}
+    - _PanSpeed: {r: 55, g: 0, b: 0, a: 0}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _TextureColorMul: {r: 1, g: 0.24056602, b: 0.24056602, a: 0}
+    - _TexturePanSpeed: {r: 0.5, g: 1, b: 0, a: 0}
+    - _TextureTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _VoronoiColor: {r: 0.3556426, g: 0.43986607, b: 0.6792453, a: 0}
+    - _VoronoiTiling: {r: 8, g: 8, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &4412167064909297383
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2

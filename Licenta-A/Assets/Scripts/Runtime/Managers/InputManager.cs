@@ -6,6 +6,13 @@ namespace AF
 {
 	public class InputManager : MonoBehaviour
 	{
+		private GameStateManager gameStateManager;
+
+		private void Awake()
+		{
+			gameStateManager = FindObjectOfType<GameStateManager>();
+		}
+
 		private void Update()
 		{
 			Select();
@@ -13,7 +20,7 @@ namespace AF
 
 		private void Select()
 		{
-			if (Input.GetMouseButtonDown(1) && !IsPointerOverUIElement())
+			if (gameStateManager.IsCurrentState<EditWallState>() && Input.GetMouseButtonDown(1) && !IsPointerOverUIElement())
 			{
 				var ray = App.ActiveCamera.ScreenPointToRay(Input.mousePosition);
 				if (Physics.Raycast(ray, out var rayHit, Mathf.Infinity, LayerMask.GetMask(LayersName.WALL)))
@@ -21,12 +28,30 @@ namespace AF
 					var selectable = rayHit.collider.gameObject.GetComponentInParent<ISelectable>();
 					if (selectable != null)
 					{
-						var simpleWall = rayHit.collider.gameObject.GetComponentInParent<SimpleWallController>();
-						if (simpleWall != null)
+						var editWallState = gameStateManager.FindState<EditWallState>();
+
+						switch (editWallState.SelectedWallType)
 						{
-							simpleWall.Select();
+							case SelectedWallType.PartialWall:
+								var simpleWall = rayHit.collider.gameObject.GetComponentInParent<PartialWallController>();
+								simpleWall?.Select();
+								break;
+
+							case SelectedWallType.EntireWall:
+								var completeWall = rayHit.collider.gameObject.GetComponentInParent<WallController>();
+								completeWall?.Select();
+								break;
 						}
-						Debug.Log("An object with name: " + rayHit.collider.gameObject.name + " was selected!");
+
+						Debug.Log("An object with name <" + rayHit.collider.gameObject.name + "> was selected!");
+					}
+				}
+				else
+				{
+					if (App.SelectedPartialWall != null)
+					{
+						App.SelectedPartialWall.View.SelectObject.Deselect();
+						App.SelectedPartialWall = null;
 					}
 				}
 			}

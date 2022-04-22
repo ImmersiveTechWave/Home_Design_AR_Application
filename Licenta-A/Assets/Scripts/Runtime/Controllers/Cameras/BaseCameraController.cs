@@ -1,3 +1,4 @@
+using AF.UI;
 using UnityEngine;
 
 namespace AF
@@ -8,9 +9,13 @@ namespace AF
 		public bool ThisIsTheMainCamera { get; set; }
 		public GameStateManager GameStateManager { get; private set; }
 
+		//
+		protected UIMainScreenScreenController MainScreen { get; private set; }
+
 		private void Awake()
 		{
 			GameStateManager = FindObjectOfType<GameStateManager>();
+			MainScreen = FindObjectOfType<UIMainScreenScreenController>();
 		}
 
 		private void Start()
@@ -22,6 +27,7 @@ namespace AF
 		{
 			ThisIsTheMainCamera = true;
 			BaseCamera.enabled = true;
+			App.ActiveCamera = BaseCamera;
 		}
 
 		public virtual void ExitState()

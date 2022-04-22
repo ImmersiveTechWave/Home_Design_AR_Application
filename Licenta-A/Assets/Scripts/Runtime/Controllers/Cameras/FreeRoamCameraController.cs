@@ -26,19 +26,19 @@ namespace AF
 			var newPosition = transform.position;
 			if (Input.GetKey(KeyCode.W))
 			{
-				newPosition += newPosition * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += transform.forward * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.S))
 			{
-				newPosition += -newPosition * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += -transform.forward * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.D))
 			{
-				newPosition += newPosition * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += transform.right * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.A))
 			{
-				newPosition += -newPosition * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+				newPosition += -transform.right * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.Q))
 			{
@@ -77,11 +77,21 @@ namespace AF
 		public override void EnterState()
 		{
 			base.EnterState();
+			SetButtonsTextColor(ColorUtils.BLUE_COLOR);
 		}
 
 		public override void ExitState()
 		{
 			base.ExitState();
+			SetButtonsTextColor(ColorUtils.WHITE_COLOR);
+		}
+
+		private void SetButtonsTextColor(Color32 color)
+		{
+			if (MainScreen.ScreenView != null)
+			{
+				MainScreen.ScreenView.UIMovementButtonsFreeRoamButtonText.color = color;
+			}
 		}
 	}
 }

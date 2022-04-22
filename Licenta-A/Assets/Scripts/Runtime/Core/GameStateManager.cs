@@ -18,6 +18,7 @@ namespace AF
 		private Stack<BaseGameState> gameStateStack = new Stack<BaseGameState>();
 		private Dictionary<Type, BaseGameState> stateDictionary = new Dictionary<Type, BaseGameState>();
 
+
 		public void Awake()
 		{
 			if (instance == null)
@@ -106,6 +107,11 @@ namespace AF
 				return null;
 			}
 			return state;
+		}
+
+		public T FindState<T>() where T: BaseGameState
+		{
+			return FindState(typeof(T)) as T;
 		}
 
 		private void PushState(Type type)

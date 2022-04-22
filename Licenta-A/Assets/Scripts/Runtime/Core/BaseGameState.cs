@@ -1,11 +1,19 @@
+using AF.UI;
 using UnityEngine;
 
 namespace AF
 {
 	public abstract class BaseGameState : MonoBehaviour
 	{
-		public virtual void Enter(BaseGameState to)
+		protected UIMainScreenScreenController MainScreen { get; private set; }
+
+		private void Awake()
 		{
+			MainScreen = FindObjectOfType<UIMainScreenScreenController>();
+		}
+
+		public virtual void Enter(BaseGameState to)
+		{				
 			Debug.Log("Enter in " + to?.name.ToString());
 		}
 

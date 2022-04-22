@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AF.UI
 {
 	public class UIMainScreenScreenController : AFScreen
 	{
-		public UIMainScreenScreenComponents ScreenView;
+		public UIMainScreenScreenComponents ScreenView { get; set; }
 
 		private CameraManager cameraManager;
 		private GameStateManager gameStateManager;
@@ -27,13 +25,13 @@ namespace AF.UI
 			ScreenView.UIMovementButtonsARButton.onClick.AddListener(ChangeToAR);
 
 			ScreenView.UILeftBarMenuImageCreateWallButton.onClick.AddListener(ChangeToCreateWallState);
-			ScreenView.UILeftBarMenuImageCustomizeColorButton.onClick.AddListener(ChangeToCostumizeWallState);
+			ScreenView.UILeftBarMenuImageEditWallButton.onClick.AddListener(ChangeToCostumizeWallState);
 			ScreenView.UILeftBarMenuImageMovementButton.onClick.AddListener(ChangeToMovementState);
 		}
 
 		private void ChangeToCostumizeWallState()
 		{
-			gameStateManager.SwitchState<CustomizeWallState>();
+			gameStateManager.SwitchState<EditWallState>();
 		}
 
 		private void ChangeToMovementState()
@@ -48,7 +46,7 @@ namespace AF.UI
 
 		private void ChangeToAR()
 		{
-
+			cameraManager.ChangeToARCamera();
 		}
 
 		private void ChangeToTopView()
