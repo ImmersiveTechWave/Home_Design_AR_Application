@@ -1,83 +1,50 @@
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
 
 namespace AF
 {
 	public class FreeRoamCameraController : BaseCameraController
 	{
-		private const float CAMERA_MOVEMENT_SPEED = 10f;
-		private const float CAMERA_ROTATION_SPEED_MULTIPLICATOR = 0.5f;
-		private const float MIN_NEW_POSITION = 2f;
-		private const float MAX_NEW_POSITION = 50f;
-
-		private bool mouseIsDown;
-		private Vector3 startMousePosition = Vector3.zero;
+		private const float DESKTOP_CAMERA_MOVEMENT_SPEED = 10f;
+		private const float DESKTOP_CAMERA_ROTATION_SPEED = 0.5f;
+		private const float MOBILE_CAMERA_MOVEMENT_SPEED = 5f;
+		private const float MOBILE_CAMERA_ROTATION_SPEED = 20f;
 
 		private void Update()
 		{
 			if (GameStateManager.IsCurrentState<MovementState>() && ThisIsTheMainCamera)
 			{
-				ConsumeUserMovementInput();
-				ConsumeUserRotationInput();
+				ConsumeDesktopUserMovementInput(DESKTOP_CAMERA_MOVEMENT_SPEED, transform);
+				ConsumeDesktopUserRotationInput(DESKTOP_CAMERA_ROTATION_SPEED, transform);
+				ConsumeMobileUserInput();
 			}
 		}
 
-		private void ConsumeUserMovementInput()
+		private void ConsumeMobileUserInput()
 		{
 			var newPosition = transform.position;
-			if (Input.GetKey(KeyCode.W))
-			{
-				newPosition += transform.forward * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.S))
-			{
-				newPosition += -transform.forward * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.D))
-			{
-				newPosition += transform.right * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.A))
-			{
-				newPosition += -transform.right * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.Q))
-			{
-				newPosition += Vector3.up * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.E))
-			{
-				newPosition += -Vector3.up * CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			}
+			var heightInput = InputController.MoveCamera.MoveHeight.ReadValue<Vector2>();
+			var moveInput = InputController.MoveCamera.Move.ReadValue<Vector2>();
+			var rotationInput = InputController.MoveCamera.Rotate.ReadValue<Vector2>();
+
+			newPosition.x += moveInput.x * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+			newPosition.y += heightInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+			newPosition.z += moveInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+
 			newPosition.y = Mathf.Clamp(newPosition.y, MIN_NEW_POSITION, MAX_NEW_POSITION);
 			transform.position = newPosition;
-		}
-
-		private void ConsumeUserRotationInput()
-		{
-			if (Input.GetMouseButtonDown(1))
-			{
-				mouseIsDown = true;
-				startMousePosition = Input.mousePosition;
-			}
-
-			if (Input.GetMouseButton(1) && mouseIsDown)
-			{
-				var difference = Input.mousePosition - startMousePosition;
-				var offset = new Vector2(difference.x / Screen.width, difference.y / Screen.height) * CAMERA_ROTATION_SPEED_MULTIPLICATOR;
-				transform.Rotate(0.0f, offset.x, 0.0f, Space.World);
-				transform.Rotate(offset.y, 0.0f, 0.0f, Space.Self);
-			}
-
-			if (Input.GetMouseButtonUp(1))
-			{
-				mouseIsDown = false;
-			}
+			transform.Rotate(0.0f, rotationInput.x * MOBILE_CAMERA_ROTATION_SPEED * Time.deltaTime, 0.0f, Space.World);
+			transform.Rotate(rotationInput.y * MOBILE_CAMERA_ROTATION_SPEED * Time.deltaTime, 0.0f, 0.0f, Space.Self);
 		}
 
 		public override void EnterState()
 		{
 			base.EnterState();
 			SetButtonsTextColor(ColorUtils.BLUE_COLOR);
+			if (GameStateManager.IsCurrentState<MovementState>())
+			{
+				MainScreen.ScreenView.UIJoysticksRotationJoystick.gameObject.SetActive(true);
+			}
 		}
 
 		public override void ExitState()

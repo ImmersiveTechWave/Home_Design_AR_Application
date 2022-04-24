@@ -56,7 +56,7 @@ namespace AF
 
 		private void DrawWall()
 		{
-			if (Input.GetMouseButtonDown(0) && !inputManager.IsPointerOverUIElement())
+			if (Input.GetMouseButtonDown(0) && !inputManager.IsPointerOverUIElement() && Physics.Raycast(App.ActiveCamera.ScreenPointToRay(Input.mousePosition), out var rayHit, Mathf.Infinity, LayerMask.GetMask(LayersName.PLANE)))
 			{
 				startWallGO = Instantiate(startWallResource, Vector3.zero, Quaternion.identity);
 				endWallGO = Instantiate(endWallResource, Vector3.zero + new Vector3(1f, 0f, 1f), Quaternion.identity);

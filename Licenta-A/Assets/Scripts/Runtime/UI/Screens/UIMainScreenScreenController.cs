@@ -24,9 +24,9 @@ namespace AF.UI
 			ScreenView.UIMovementButtonsFreeRoamButton.onClick.AddListener(ChangeToFreeRoam);
 			ScreenView.UIMovementButtonsARButton.onClick.AddListener(ChangeToAR);
 
-			ScreenView.UILeftBarMenuImageCreateWallButton.onClick.AddListener(ChangeToCreateWallState);
-			ScreenView.UILeftBarMenuImageEditWallButton.onClick.AddListener(ChangeToCostumizeWallState);
-			ScreenView.UILeftBarMenuImageMovementButton.onClick.AddListener(ChangeToMovementState);
+			ScreenView.UILeftBarMenuImageHolderCreateWallButton.onClick.AddListener(ChangeToCreateWallState);
+			ScreenView.UILeftBarMenuImageHolderEditWallButton.onClick.AddListener(ChangeToCostumizeWallState);
+			ScreenView.UILeftBarMenuImageHolderMovementButton.onClick.AddListener(ChangeToMovementState);
 		}
 
 		private void ChangeToCostumizeWallState()
