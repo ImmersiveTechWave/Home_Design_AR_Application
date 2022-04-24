@@ -1,0 +1,74 @@
+{
+    "name": "InputController",
+    "maps": [
+        {
+            "name": "MoveCamera",
+            "id": "daf93932-784b-4870-b45e-084c7604c1c1",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "54e57602-5a9a-41b4-a58a-390909fbc49f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rotate",
+                    "type": "Button",
+                    "id": "794f93e1-1f90-44c9-bd1d-5e90de1ae095",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveHeight",
+                    "type": "Button",
+                    "id": "ff23761c-4b87-434f-bd7a-678e49f4f1a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0c48d0ea-24aa-450c-ac95-b5dbc3854fe7",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ef94594-3713-4af8-9386-a43108f00cf8",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "082abbf2-485e-477a-b08c-2d4d786c586d",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveHeight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -6,20 +6,16 @@ namespace AF
 	public abstract class BaseGameState : MonoBehaviour
 	{
 		protected UIMainScreenScreenController MainScreen { get; private set; }
+		protected GameStateManager GameStateManager { get; private set; }
 
-		private void Awake()
+		public virtual void Awake()
 		{
 			MainScreen = FindObjectOfType<UIMainScreenScreenController>();
+			GameStateManager = FindObjectOfType<GameStateManager>();
 		}
 
-		public virtual void Enter(BaseGameState to)
-		{				
-			Debug.Log("Enter in " + to?.name.ToString());
-		}
+		public virtual void Enter(BaseGameState to) { }
 
-		public virtual void Exit(BaseGameState from)
-		{
-			Debug.Log("Exit from " + from?.name.ToString());
-		}
+		public virtual void Exit(BaseGameState from) { }
 	}
 }

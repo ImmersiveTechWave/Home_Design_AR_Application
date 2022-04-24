@@ -20,7 +20,7 @@ namespace AF
 
 		private void Select()
 		{
-			if (gameStateManager.IsCurrentState<EditWallState>() && Input.GetMouseButtonDown(1) && !IsPointerOverUIElement())
+			if (gameStateManager.IsCurrentState<EditWallState>() && Input.GetMouseButtonDown(0) && !IsPointerOverUIElement())
 			{
 				var ray = App.ActiveCamera.ScreenPointToRay(Input.mousePosition);
 				if (Physics.Raycast(ray, out var rayHit, Mathf.Infinity, LayerMask.GetMask(LayersName.WALL)))

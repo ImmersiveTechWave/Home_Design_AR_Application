@@ -20,7 +20,7 @@ namespace AF
 		{
 			if (MainScreen.ScreenView != null)
 			{
-				MainScreen.ScreenView.UILeftBarMenuImageCreateWallButtonText.color = color;
+				MainScreen.ScreenView.UILeftBarMenuImageHolderCreateWallButtonText.color = color;
 			}
 		}
 	}
