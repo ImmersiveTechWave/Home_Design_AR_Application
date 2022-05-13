@@ -9,6 +9,8 @@ namespace AF.UI
 		private CameraManager cameraManager;
 		private GameStateManager gameStateManager;
 
+		private ButtonMaterial ButtonMaterial1;
+
 		private void Awake()
 		{
 			base.Awake();
@@ -20,6 +22,8 @@ namespace AF.UI
 		private void Start()
 		{
 			AddUIWalls();
+			GetAllButtonsMaterial();
+			SetAllButtonsTexture();
 			ScreenView.UIMovementButtonsTopViewButton.onClick.AddListener(ChangeToTopView);
 			ScreenView.UIMovementButtonsFreeRoamButton.onClick.AddListener(ChangeToFreeRoam);
 			ScreenView.UIMovementButtonsARButton.onClick.AddListener(ChangeToAR);
@@ -27,6 +31,17 @@ namespace AF.UI
 			ScreenView.UILeftBarMenuImageHolderCreateWallButton.onClick.AddListener(ChangeToCreateWallState);
 			ScreenView.UILeftBarMenuImageHolderEditWallButton.onClick.AddListener(ChangeToCostumizeWallState);
 			ScreenView.UILeftBarMenuImageHolderMovementButton.onClick.AddListener(ChangeToMovementState);
+			ScreenView.UICostumizeWallImageColor1.onClick.AddListener(SetWallMaterial1);
+		}
+
+		private void SetWallMaterial1()
+		{
+			SetWallMaterial(ButtonMaterial1.Material);
+		}
+
+		private void SetWallMaterial(Material material)
+		{
+			App.SelectedPartialWall?.View?.WallFaceController?.SetFaceMaterial(material);
 		}
 
 		private void ChangeToCostumizeWallState()
@@ -57,6 +72,16 @@ namespace AF.UI
 		private void ChangeToFreeRoam()
 		{
 			cameraManager.ChangeToFreeRoamCamera();
+		}
+
+		private void GetAllButtonsMaterial()
+		{
+			ButtonMaterial1 = ScreenView.UICostumizeWallImageColor1.GetComponent<ButtonMaterial>();
+		}
+
+		private void SetAllButtonsTexture()
+		{
+			ScreenView.UICostumizeWallImageColor1.image.sprite = ButtonMaterial1.image;
 		}
 
 		private void AddUIWalls()

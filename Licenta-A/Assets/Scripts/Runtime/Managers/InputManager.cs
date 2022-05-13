@@ -35,14 +35,15 @@ namespace AF
 							case SelectedWallType.PartialWall:
 								var wallCollider = rayHit.collider;
 
-								if (wallCollider.name == WallTypeController.FIRST_FACE)
+								if (wallCollider.name == WallFaceController.FIRST_FACE)
 								{
-
+									App.SelectedWallFace = SelectedWallFace.FirstFace;
 								}
-								else if (wallCollider.name == WallTypeController.SECOND_FACE)
+								else if (wallCollider.name == WallFaceController.SECOND_FACE)
 								{
-
+									App.SelectedWallFace = SelectedWallFace.SecondFace;
 								}
+
 								var simpleWall = wallCollider.gameObject.GetComponentInParent<PartialWallController>();
 								simpleWall?.Select();
 								break;

@@ -40,6 +40,7 @@ namespace AF
 				newWallGo.name = "Wall";
 				App.SelectedPartialWall.View.Wall = newWallGo;
 				App.SelectedPartialWall.View.SelectObject = App.SelectedPartialWall.View.transform.Find("SelectedBox").GetComponent<SelectObject>();
+				App.SelectedPartialWall.View.WallFaceController = newWallGo.GetComponent<WallFaceController>();
 			}
 		}
 

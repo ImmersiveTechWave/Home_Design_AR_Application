@@ -8,7 +8,7 @@ namespace AF
         public GameObject MarginLeft { get; private set; }
         public GameObject MarginRight { get; private set; }
         public SelectObject SelectObject { get; set; }
-       // public 
+        public WallFaceController WallFaceController { get; set; }
 
         private void Awake()
         {
@@ -16,6 +16,7 @@ namespace AF
             MarginLeft = transform.Find("MarginLeft").gameObject;
             MarginRight = transform.Find("MarginRight").gameObject;
             SelectObject = transform.Find("SelectedBox").GetComponent<SelectObject>();
+            WallFaceController = transform.Find("Wall").GetComponent<WallFaceController>();
         }
     }
 }
