@@ -8,6 +8,7 @@ namespace AF
         public GameObject MarginLeft { get; private set; }
         public GameObject MarginRight { get; private set; }
         public SelectObject SelectObject { get; set; }
+       // public 
 
         private void Awake()
         {

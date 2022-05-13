@@ -33,7 +33,17 @@ namespace AF
 						switch (editWallState.SelectedWallType)
 						{
 							case SelectedWallType.PartialWall:
-								var simpleWall = rayHit.collider.gameObject.GetComponentInParent<PartialWallController>();
+								var wallCollider = rayHit.collider;
+
+								if (wallCollider.name == WallTypeController.FIRST_FACE)
+								{
+
+								}
+								else if (wallCollider.name == WallTypeController.SECOND_FACE)
+								{
+
+								}
+								var simpleWall = wallCollider.gameObject.GetComponentInParent<PartialWallController>();
 								simpleWall?.Select();
 								break;
 
@@ -42,8 +52,6 @@ namespace AF
 								completeWall?.Select();
 								break;
 						}
-
-						Debug.Log("An object with name <" + rayHit.collider.gameObject.name + "> was selected!");
 					}
 				}
 				else

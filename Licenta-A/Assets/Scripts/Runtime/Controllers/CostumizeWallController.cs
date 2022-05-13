@@ -23,7 +23,16 @@ namespace AF
 				var position = App.SelectedPartialWall.View.Wall.transform.position;
 				var rotation = App.SelectedPartialWall.View.Wall.transform.rotation;
 				Destroy(App.SelectedPartialWall.View.Wall.gameObject);
-				var path = "Prefabes/Walls/" + text.text.Trim();
+
+				var wallName = "";
+				var words = text.text.Split(' ');
+
+				foreach (var word in words)
+				{
+					wallName += word;
+				}
+
+				var path = "Prefabes/Walls/" + wallName;
 				var newWallPrefabe = Resources.Load<GameObject>(path);
 
 				var newWallGo = Instantiate(newWallPrefabe, position, rotation);
