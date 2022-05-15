@@ -88,38 +88,41 @@ namespace AF
 			isCreating = false;
 			endWallGO.transform.position = GetBestMarginPosition(inputManager.GetWorldPoint());
 
-			// Calculate the numbers of completed walls
 			var distance = Vector3.Distance(startWallGO.transform.position, endWallGO.transform.position);
-			var numberOfWalls = (int)(distance / WALL_LENGHT);
-			var difference = distance - numberOfWalls * WALL_LENGHT;
-
-			// Create a wall Controller
-			var wallController = new GameObject().AddComponent<WallController>();
-
-			// Create the Left Wall
-			var leftWallPosition = startWallGO.transform.position + previewWallGO.transform.forward * (difference / WALL_LENGHT);
-			var leftWall = Instantiate(partialWallResource, leftWallPosition, previewWallGO.transform.rotation);
-			leftWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / (WALL_LENGHT * 2));
-			wallController.AddNewSimpleWalls(leftWall);
-
-			// Create the completed walls
-			var wallForward = previewWallGO.transform.forward;
-			var startWallPosition = startWallGO.transform.position;
-
-			for (int wallNumber = 0; wallNumber < numberOfWalls; wallNumber++)
+			if (distance >= 1)
 			{
-				var startPosition = wallForward * (WALL_LENGHT * wallNumber + difference / 2 + WALL_LENGHT / 2) + startWallPosition;
-				var wall = Instantiate(partialWallResource, startPosition, previewWallGO.transform.rotation);
-				wallController.AddNewSimpleWalls(wall);
+				// Calculate the numbers of completed walls
+				var numberOfWalls = (int)(distance / WALL_LENGHT);
+				var difference = distance - numberOfWalls * WALL_LENGHT;
+
+				// Create a wall Controller
+				var wallController = new GameObject().AddComponent<WallController>();
+
+				// Create the Left Wall
+				var leftWallPosition = startWallGO.transform.position + previewWallGO.transform.forward * (difference / WALL_LENGHT);
+				var leftWall = Instantiate(partialWallResource, leftWallPosition, previewWallGO.transform.rotation);
+				leftWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / (WALL_LENGHT * 2));
+				wallController.AddNewSimpleWalls(leftWall);
+
+				// Create the completed walls
+				var wallForward = previewWallGO.transform.forward;
+				var startWallPosition = startWallGO.transform.position;
+
+				for (int wallNumber = 0; wallNumber < numberOfWalls; wallNumber++)
+				{
+					var startPosition = wallForward * (WALL_LENGHT * wallNumber + difference / 2 + WALL_LENGHT / 2) + startWallPosition;
+					var wall = Instantiate(partialWallResource, startPosition, previewWallGO.transform.rotation);
+					wallController.AddNewSimpleWalls(wall);
+				}
+
+				// Create the Right Wall
+				var rightWallPosition = wallForward * (difference / 2 + difference / 4 + WALL_LENGHT * numberOfWalls) + startWallPosition;
+				var rightWall = Instantiate(partialWallResource, rightWallPosition, previewWallGO.transform.rotation);
+				rightWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / (WALL_LENGHT * 2));
+				wallController.AddNewSimpleWalls(rightWall);
+
+				wallsManager.AddNewWall(wallController);
 			}
-
-			// Create the Right Wall
-			var rightWallPosition = wallForward * (difference / 2 + difference / 4 + WALL_LENGHT * numberOfWalls) + startWallPosition;
-			var rightWall = Instantiate(partialWallResource, rightWallPosition, previewWallGO.transform.rotation);
-			rightWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / (WALL_LENGHT * 2));
-			wallController.AddNewSimpleWalls(rightWall);
-
-			wallsManager.AddNewWall(wallController);
 
 			Destroy(previewWallGO.gameObject);
 			Destroy(startWallGO.gameObject);

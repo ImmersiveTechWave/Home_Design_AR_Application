@@ -16,6 +16,14 @@ namespace AF
 			simpleWall.transform.SetParent(transform);
 		}
 
+		public void SetFaceMaterial(Material material)
+		{
+			foreach(var wall in partialWalls)
+			{
+				wall.View?.WallFaceController?.SetFaceMaterial(material);
+			}
+		}
+
 		public void ActivateSelectBox()
 		{
 			foreach (var wall in partialWalls)
