@@ -9,9 +9,9 @@ namespace AF.UI
 		private CameraManager cameraManager;
 		private GameStateManager gameStateManager;
 
-		private ButtonMaterial ButtonMaterial1;
+		private ButtonMaterial ButtonMaterial_1;
 
-		private void Awake()
+		override public void Awake()
 		{
 			base.Awake();
 			ScreenView = GetComponent<UIMainScreenScreenComponents>();
@@ -31,12 +31,40 @@ namespace AF.UI
 			ScreenView.UILeftBarMenuImageHolderCreateWallButton.onClick.AddListener(ChangeToCreateWallState);
 			ScreenView.UILeftBarMenuImageHolderEditWallButton.onClick.AddListener(ChangeToCostumizeWallState);
 			ScreenView.UILeftBarMenuImageHolderMovementButton.onClick.AddListener(ChangeToMovementState);
-			ScreenView.UICostumizeWallImageColor1.onClick.AddListener(SetWallMaterial1);
+			
+			ScreenView.UICostumizeWallImageColor1.onClick.AddListener(SetWallMaterial_1);
+			
+			ScreenView.UICostumizeWallImageRInputSlider.onValueChanged.AddListener(SetRWallColor);
+			ScreenView.UICostumizeWallImageGInputSlider.onValueChanged.AddListener(SetGWallColor);
+			ScreenView.UICostumizeWallImageBInputSlider.onValueChanged.AddListener(SetBWallColor);
 		}
 
-		private void SetWallMaterial1()
+		private void SetRWallColor(float value)
 		{
-			SetWallMaterial(ButtonMaterial1.Material);
+			var currentColor = ScreenView.UICostumizeWallImageColor0.color;
+			SetRGBWallColor(new Color(value / 255f, currentColor.g, currentColor.b));
+		}
+
+		private void SetGWallColor(float value)
+		{
+			var currentColor = ScreenView.UICostumizeWallImageColor0.color;
+			SetRGBWallColor(new Color(currentColor.r, value / 255f, currentColor.b));
+		}
+
+		private void SetBWallColor(float value)
+		{
+			var currentColor = ScreenView.UICostumizeWallImageColor0.color;
+			SetRGBWallColor(new Color(currentColor.r, currentColor.g, value / 255f));
+		}
+
+		private void SetRGBWallColor(Color color)
+		{
+			ScreenView.UICostumizeWallImageColor0.color = color;
+		}
+
+		private void SetWallMaterial_1()
+		{
+			SetWallMaterial(ButtonMaterial_1.Material);
 		}
 
 		private void SetWallMaterial(Material material)
@@ -76,12 +104,12 @@ namespace AF.UI
 
 		private void GetAllButtonsMaterial()
 		{
-			ButtonMaterial1 = ScreenView.UICostumizeWallImageColor1.GetComponent<ButtonMaterial>();
+			ButtonMaterial_1 = ScreenView.UICostumizeWallImageColor1.GetComponent<ButtonMaterial>();
 		}
 
 		private void SetAllButtonsTexture()
 		{
-			ScreenView.UICostumizeWallImageColor1.image.sprite = ButtonMaterial1.image;
+			ScreenView.UICostumizeWallImageColor1.image.sprite = ButtonMaterial_1.Sprite;
 		}
 
 		private void AddUIWalls()
