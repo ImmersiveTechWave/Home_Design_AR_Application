@@ -62,6 +62,11 @@ namespace AF
 						App.SelectedPartialWall.View.SelectObject.Deselect();
 						App.SelectedPartialWall = null;
 					}
+					if (App.SelectedWall != null)
+					{
+						App.SelectedWall.Deselect();
+						App.SelectedWall = null;
+					}
 				}
 			}
 		}

@@ -53,6 +53,8 @@ namespace AF.UI
 			ScreenView.UILeftBarMenuImageHolderMovementButton.onClick.AddListener(ChangeToMovementState);
 
 			ScreenView.UICostumizeWallColorColor1.onClick.AddListener(SetWallMaterial_1);
+<<<<<<< HEAD
+=======
 			ScreenView.UICostumizeWallColorColor2.onClick.AddListener(SetWallMaterial_2);
 			ScreenView.UICostumizeWallColorColor3.onClick.AddListener(SetWallMaterial_3);
 			ScreenView.UICostumizeWallColorColor4.onClick.AddListener(SetWallMaterial_4);
@@ -71,6 +73,7 @@ namespace AF.UI
 			ScreenView.UICostumizeWallColorColor17.onClick.AddListener(SetWallMaterial_17);
 			ScreenView.UICostumizeWallColorColor18.onClick.AddListener(SetWallMaterial_18);
 			ScreenView.UICostumizeWallColorColor19.onClick.AddListener(SetWallMaterial_19);
+>>>>>>> origin/features/add-texture-walls
 
 			ScreenView.UICostumizeWallColorRInputSlider.onValueChanged.AddListener(SetRWallColor);
 			ScreenView.UICostumizeWallColorGInputSlider.onValueChanged.AddListener(SetGWallColor);
@@ -89,16 +92,12 @@ namespace AF.UI
 		{
 			ScreenView.UICostumizeWallColor.gameObject.SetActive(false);
 			ScreenView.UICostumizeWallType.gameObject.SetActive(true);
-			ScreenView.UICostumizeWallTypeSetWallTypeText.color = ColorUtils.BLUE_COLOR;
-			ScreenView.UICostumizeWallTypeSetWallColorText.color = ColorUtils.WHITE_COLOR;
 		}
 
 		private void ChangeToSetWallColor()
 		{
 			ScreenView.UICostumizeWallColor.gameObject.SetActive(true);
 			ScreenView.UICostumizeWallType.gameObject.SetActive(false);
-			ScreenView.UICostumizeWallColorSetWallColorColorText.color = ColorUtils.BLUE_COLOR;
-			ScreenView.UICostumizeWallColorSetWallTypeTypeText.color = ColorUtils.WHITE_COLOR;
 		}
 
 		private void SetRWallColor(float value)
@@ -203,16 +202,12 @@ namespace AF.UI
 
 		private void SetWallMaterial_15()
 		{
-			var newMaterial = ButtonMaterial_15.Material;
-			newMaterial.color = ScreenView.UICostumizeWallColorColor15.image.color;
-			SetWallMaterial(newMaterial);
+			SetWallMaterial(ButtonMaterial_15.Material);
 		}
 
 		private void SetWallMaterial_16()
 		{
-			var newMaterial = ButtonMaterial_16.Material;
-			newMaterial.color = ScreenView.UICostumizeWallColorColor16.image.color;
-			SetWallMaterial(newMaterial);
+			SetWallMaterial(ButtonMaterial_16.Material);
 		}
 
 		private void SetWallMaterial_17()
@@ -222,16 +217,12 @@ namespace AF.UI
 
 		private void SetWallMaterial_18()
 		{
-			var newMaterial = ButtonMaterial_18.Material;
-			newMaterial.color = ScreenView.UICostumizeWallColorColor18.image.color;
-			SetWallMaterial(newMaterial);
+			SetWallMaterial(ButtonMaterial_18.Material);
 		}
 
 		private void SetWallMaterial_19()
 		{
-			var newMaterial = ButtonMaterial_19.Material;
-			newMaterial.color = ScreenView.UICostumizeWallColorColor19.image.color;
-			SetWallMaterial(newMaterial);
+			SetWallMaterial(ButtonMaterial_19.Material);
 		}
 
 		private void SetWallMaterial(Material material)
@@ -249,7 +240,6 @@ namespace AF.UI
 		private void ChangeToCostumizeWallState()
 		{
 			gameStateManager.SwitchState<EditWallState>();
-			ChangeToSetWallType();
 		}
 
 		private void ChangeToMovementState()

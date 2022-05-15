@@ -43,9 +43,13 @@ namespace AF
 					var newWallGo = Instantiate(newWallPrefabe, position, rotation);
 					newWallGo.transform.SetParent(App.SelectedPartialWall.transform);
 					newWallGo.name = "Wall";
+					var firstFaceMaterial =  App.SelectedPartialWall.View.WallFaceController.FirstFaceRenderer.material;
+					var secondFaceMaterial = App.SelectedPartialWall.View.WallFaceController.SecondFaceRenderer.material;
 					App.SelectedPartialWall.View.Wall = newWallGo;
 					App.SelectedPartialWall.View.SelectObject = App.SelectedPartialWall.View.transform.Find("SelectedBox").GetComponent<SelectObject>();
 					App.SelectedPartialWall.View.WallFaceController = newWallGo.GetComponent<WallFaceController>();
+					App.SelectedPartialWall.View.WallFaceController.SetFirstFaceMaterial(firstFaceMaterial);
+					App.SelectedPartialWall.View.WallFaceController.SetSecondFaceMaterial(secondFaceMaterial);
 				}
 			}
 		}
