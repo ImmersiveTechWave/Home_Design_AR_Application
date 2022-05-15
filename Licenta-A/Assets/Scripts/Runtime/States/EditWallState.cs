@@ -8,6 +8,13 @@ namespace AF
 		EntireWall
 	}
 
+	public enum SelectedWallFace
+	{
+		FirstFace,
+		SecondFace,
+		None
+	}
+
 	public class EditWallState : BaseGameState
 	{
 		public SelectedWallType SelectedWallType { get; set; } = SelectedWallType.PartialWall;

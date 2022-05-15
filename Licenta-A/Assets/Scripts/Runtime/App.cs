@@ -7,5 +7,6 @@ namespace AF
 		public static Camera ActiveCamera { get; set; }
 		public static PartialWallController SelectedPartialWall;
 		public static WallController SelectedWall;
+		public static SelectedWallFace SelectedWallFace = SelectedWallFace.None;
 	}
 }
