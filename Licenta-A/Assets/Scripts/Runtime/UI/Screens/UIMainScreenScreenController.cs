@@ -47,14 +47,14 @@ namespace AF.UI
 
 		private void ChangeToSetWallType()
 		{
-			ScreenView.UICostumizeWallColor.gameObject.SetActive(true);
-			ScreenView.UICostumizeWallType.gameObject.SetActive(false);
+			ScreenView.UICostumizeWallColor.gameObject.SetActive(false);
+			ScreenView.UICostumizeWallType.gameObject.SetActive(true);
 		}
 
 		private void ChangeToSetWallColor()
 		{
-			ScreenView.UICostumizeWallColor.gameObject.SetActive(false);
-			ScreenView.UICostumizeWallType.gameObject.SetActive(true);
+			ScreenView.UICostumizeWallColor.gameObject.SetActive(true);
+			ScreenView.UICostumizeWallType.gameObject.SetActive(false);
 		}
 
 		private void SetRWallColor(float value)
