@@ -8,6 +8,8 @@ namespace AF.UI
 {
 public class UIMainScreenScreenComponents : MonoBehaviour
 {
+	public Button UIDeleteButton{ get; protected set; }
+	public Image UIDeleteButtonImage{ get; protected set; }
 	public Image UILeftBarMenuImage{ get; protected set; }
 	public Button UILeftBarMenuImageMenuButton{ get; protected set; }
 	public RectTransform UILeftBarMenuImageHolder{ get; protected set; }
@@ -24,42 +26,44 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	public Image UILeftBarMenuImageHeightJoystick{ get; protected set; }
 	public Image UILeftBarMenuImageHeightJoystickButton{ get; protected set; }
 	public TextMeshProUGUI UILeftBarMenuImageHeightJoystickButtonText{ get; protected set; }
-	public ScrollRect UICostumizeWallScrollView{ get; protected set; }
-	public Image UICostumizeWallScrollViewViewport{ get; protected set; }
-	public RectTransform UICostumizeWallScrollViewViewportContent{ get; protected set; }
-	public Scrollbar UICostumizeWallScrollViewScrollbarHorizontal{ get; protected set; }
-	public Button UICostumizeWallScrollViewSetWallColor{ get; protected set; }
-	public TextMeshProUGUI UISetWallColorText{ get; protected set; }
-	public Button UICostumizeWallScrollViewSetWallType{ get; protected set; }
-	public TextMeshProUGUI UISetWallTypeText{ get; protected set; }
-	public Image UICostumizeWallImage{ get; protected set; }
-	public Image UICostumizeWallImageColor0{ get; protected set; }
-	public Button UICostumizeWallImageColor1{ get; protected set; }
-	public Button UICostumizeWallImageColor2{ get; protected set; }
-	public Button UICostumizeWallImageColor3{ get; protected set; }
-	public Button UICostumizeWallImageColor4{ get; protected set; }
-	public Button UICostumizeWallImageColor5{ get; protected set; }
-	public Button UICostumizeWallImageColor6{ get; protected set; }
-	public Button UICostumizeWallImageColor7{ get; protected set; }
-	public Button UICostumizeWallImageColor8{ get; protected set; }
-	public Button UICostumizeWallImageColor9{ get; protected set; }
-	public Button UICostumizeWallImageColor10{ get; protected set; }
-	public Button UICostumizeWallImageColor11{ get; protected set; }
-	public Button UICostumizeWallImageColor12{ get; protected set; }
-	public Button UICostumizeWallImageColor13{ get; protected set; }
-	public Button UICostumizeWallImageColor14{ get; protected set; }
-	public Button UICostumizeWallImageColor15{ get; protected set; }
-	public Button UICostumizeWallImageColor16{ get; protected set; }
-	public Button UICostumizeWallImageColor17{ get; protected set; }
-	public Button UICostumizeWallImageColor18{ get; protected set; }
-	public Button UICostumizeWallImageColor19{ get; protected set; }
-	public InputSliderComponent UICostumizeWallImageRInputSlider{ get; protected set; }
-	public InputSliderComponent UICostumizeWallImageGInputSlider{ get; protected set; }
-	public InputSliderComponent UICostumizeWallImageBInputSlider{ get; protected set; }
-	public Button UICostumizeWallImageSetRGBColor{ get; protected set; }
-	public TextMeshProUGUI UISetRGBColorText{ get; protected set; }
-	public Button UICostumizeWallImageSetWallColor{ get; protected set; }
-	public Button UICostumizeWallImageSetWallType{ get; protected set; }
+	public ScrollRect UICostumizeWallType{ get; protected set; }
+	public Button UICostumizeWallTypeSetWallColor{ get; protected set; }
+	public TextMeshProUGUI UICostumizeWallTypeSetWallColorText{ get; protected set; }
+	public Button UICostumizeWallTypeSetWallType{ get; protected set; }
+	public TextMeshProUGUI UICostumizeWallTypeSetWallTypeText{ get; protected set; }
+	public Image UICostumizeWallTypeViewport{ get; protected set; }
+	public RectTransform UICostumizeWallTypeViewportContent{ get; protected set; }
+	public Scrollbar UICostumizeWallTypeScrollbarHorizontal{ get; protected set; }
+	public Image UICostumizeWallColor{ get; protected set; }
+	public Button UICostumizeWallColorSetRGBColor{ get; protected set; }
+	public TextMeshProUGUI UICostumizeWallColorSetRGBColorText{ get; protected set; }
+	public Button UICostumizeWallColorSetWallColor{ get; protected set; }
+	public TextMeshProUGUI UICostumizeWallColorSetWallColorColorText{ get; protected set; }
+	public Button UICostumizeWallColorSetWallType{ get; protected set; }
+	public TextMeshProUGUI UICostumizeWallColorSetWallTypeTypeText{ get; protected set; }
+	public Image UICostumizeWallColorColor0{ get; protected set; }
+	public Button UICostumizeWallColorColor1{ get; protected set; }
+	public Button UICostumizeWallColorColor2{ get; protected set; }
+	public Button UICostumizeWallColorColor3{ get; protected set; }
+	public Button UICostumizeWallColorColor4{ get; protected set; }
+	public Button UICostumizeWallColorColor5{ get; protected set; }
+	public Button UICostumizeWallColorColor6{ get; protected set; }
+	public Button UICostumizeWallColorColor7{ get; protected set; }
+	public Button UICostumizeWallColorColor8{ get; protected set; }
+	public Button UICostumizeWallColorColor9{ get; protected set; }
+	public Button UICostumizeWallColorColor10{ get; protected set; }
+	public Button UICostumizeWallColorColor11{ get; protected set; }
+	public Button UICostumizeWallColorColor12{ get; protected set; }
+	public Button UICostumizeWallColorColor13{ get; protected set; }
+	public Button UICostumizeWallColorColor14{ get; protected set; }
+	public Button UICostumizeWallColorColor15{ get; protected set; }
+	public Button UICostumizeWallColorColor16{ get; protected set; }
+	public Button UICostumizeWallColorColor17{ get; protected set; }
+	public Button UICostumizeWallColorColor18{ get; protected set; }
+	public Button UICostumizeWallColorColor19{ get; protected set; }
+	public InputSliderComponent UICostumizeWallColorRInputSlider{ get; protected set; }
+	public InputSliderComponent UICostumizeWallColorGInputSlider{ get; protected set; }
+	public InputSliderComponent UICostumizeWallColorBInputSlider{ get; protected set; }
 	public RectTransform UIMovementButtons{ get; protected set; }
 	public Button UIMovementButtonsTopViewButton{ get; protected set; }
 	public TextMeshProUGUI UIMovementButtonsTopViewButtonText{ get; protected set; }
@@ -77,6 +81,8 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 
 	private void Awake()
 	{
+		UIDeleteButton = transform.Find("DeleteButton").GetComponent<Button>();
+		UIDeleteButtonImage = transform.Find("DeleteButton/Image").GetComponent<Image>();
 		UILeftBarMenuImage = transform.Find("LeftBarMenuImage").GetComponent<Image>();
 		UILeftBarMenuImageMenuButton = transform.Find("LeftBarMenuImage/MenuButton").GetComponent<Button>();
 		UILeftBarMenuImageHolder = transform.Find("LeftBarMenuImage/Holder").GetComponent<RectTransform>();
@@ -93,37 +99,45 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 		UILeftBarMenuImageHeightJoystick = transform.Find("LeftBarMenuImage/HeightJoystick").GetComponent<Image>();
 		UILeftBarMenuImageHeightJoystickButton = transform.Find("LeftBarMenuImage/HeightJoystick/Button").GetComponent<Image>();
 		UILeftBarMenuImageHeightJoystickButtonText = transform.Find("LeftBarMenuImage/HeightJoystick/Button/Text").GetComponent<TextMeshProUGUI>();
-		UICostumizeWallScrollView = transform.Find("CostumizeWallScrollView").GetComponent<ScrollRect>();
-		UICostumizeWallScrollViewViewport = transform.Find("CostumizeWallScrollView/Viewport").GetComponent<Image>();
-		UICostumizeWallScrollViewViewportContent = transform.Find("CostumizeWallScrollView/Viewport/Content").GetComponent<RectTransform>();
-		UICostumizeWallScrollViewScrollbarHorizontal = transform.Find("CostumizeWallScrollView/Scrollbar Horizontal").GetComponent<Scrollbar>();
-		UICostumizeWallScrollViewSetWallColor = transform.Find("CostumizeWallScrollView/SetWallColor").GetComponent<Button>();
-		UICostumizeWallScrollViewSetWallType = transform.Find("CostumizeWallScrollView/SetWallType").GetComponent<Button>();
-		UICostumizeWallImage = transform.Find("CostumizeWallImage").GetComponent<Image>();
-		UICostumizeWallImageColor0 = transform.Find("CostumizeWallImage/Color0").GetComponent<Image>();
-		UICostumizeWallImageColor1 = transform.Find("CostumizeWallImage/Color1").GetComponent<Button>();
-		UICostumizeWallImageColor2 = transform.Find("CostumizeWallImage/Color2").GetComponent<Button>();
-		UICostumizeWallImageColor3 = transform.Find("CostumizeWallImage/Color3").GetComponent<Button>();
-		UICostumizeWallImageColor4 = transform.Find("CostumizeWallImage/Color4").GetComponent<Button>();
-		UICostumizeWallImageColor5 = transform.Find("CostumizeWallImage/Color5").GetComponent<Button>();
-		UICostumizeWallImageColor6 = transform.Find("CostumizeWallImage/Color6").GetComponent<Button>();
-		UICostumizeWallImageColor7 = transform.Find("CostumizeWallImage/Color7").GetComponent<Button>();
-		UICostumizeWallImageColor8 = transform.Find("CostumizeWallImage/Color8").GetComponent<Button>();
-		UICostumizeWallImageColor9 = transform.Find("CostumizeWallImage/Color9").GetComponent<Button>();
-		UICostumizeWallImageColor10 = transform.Find("CostumizeWallImage/Color10").GetComponent<Button>();
-		UICostumizeWallImageColor11 = transform.Find("CostumizeWallImage/Color11").GetComponent<Button>();
-		UICostumizeWallImageColor12 = transform.Find("CostumizeWallImage/Color12").GetComponent<Button>();
-		UICostumizeWallImageColor13 = transform.Find("CostumizeWallImage/Color13").GetComponent<Button>();
-		UICostumizeWallImageColor14 = transform.Find("CostumizeWallImage/Color14").GetComponent<Button>();
-		UICostumizeWallImageColor15 = transform.Find("CostumizeWallImage/Color15").GetComponent<Button>();
-		UICostumizeWallImageColor16 = transform.Find("CostumizeWallImage/Color16").GetComponent<Button>();
-		UICostumizeWallImageColor17 = transform.Find("CostumizeWallImage/Color17").GetComponent<Button>();
-		UICostumizeWallImageColor18 = transform.Find("CostumizeWallImage/Color18").GetComponent<Button>();
-		UICostumizeWallImageColor19 = transform.Find("CostumizeWallImage/Color19").GetComponent<Button>();
-		UICostumizeWallImageRInputSlider = transform.Find("CostumizeWallImage/RInputSlider").GetComponent<InputSliderComponent>();
-		UICostumizeWallImageGInputSlider = transform.Find("CostumizeWallImage/GInputSlider").GetComponent<InputSliderComponent>();
-		UICostumizeWallImageBInputSlider = transform.Find("CostumizeWallImage/BInputSlider").GetComponent<InputSliderComponent>();
-		UICostumizeWallImageSetRGBColor = transform.Find("CostumizeWallImage/SetRGBColor").GetComponent<Button>();
+		UICostumizeWallType = transform.Find("CostumizeWallType").GetComponent<ScrollRect>();
+		UICostumizeWallTypeSetWallColor = transform.Find("CostumizeWallType/SetWallColor").GetComponent<Button>();
+		UICostumizeWallTypeSetWallColorText = transform.Find("CostumizeWallType/SetWallColor/Text").GetComponent<TextMeshProUGUI>();
+		UICostumizeWallTypeSetWallType = transform.Find("CostumizeWallType/SetWallType").GetComponent<Button>();
+		UICostumizeWallTypeSetWallTypeText = transform.Find("CostumizeWallType/SetWallType/Text").GetComponent<TextMeshProUGUI>();
+		UICostumizeWallTypeViewport = transform.Find("CostumizeWallType/Viewport").GetComponent<Image>();
+		UICostumizeWallTypeViewportContent = transform.Find("CostumizeWallType/Viewport/Content").GetComponent<RectTransform>();
+		UICostumizeWallTypeScrollbarHorizontal = transform.Find("CostumizeWallType/Scrollbar Horizontal").GetComponent<Scrollbar>();
+		UICostumizeWallColor = transform.Find("CostumizeWallColor").GetComponent<Image>();
+		UICostumizeWallColorSetRGBColor = transform.Find("CostumizeWallColor/SetRGBColor").GetComponent<Button>();
+		UICostumizeWallColorSetRGBColorText = transform.Find("CostumizeWallColor/SetRGBColor/Text").GetComponent<TextMeshProUGUI>();
+		UICostumizeWallColorSetWallColor = transform.Find("CostumizeWallColor/SetWallColor").GetComponent<Button>();
+		UICostumizeWallColorSetWallColorColorText = transform.Find("CostumizeWallColor/SetWallColor/ColorText").GetComponent<TextMeshProUGUI>();
+		UICostumizeWallColorSetWallType = transform.Find("CostumizeWallColor/SetWallType").GetComponent<Button>();
+		UICostumizeWallColorSetWallTypeTypeText = transform.Find("CostumizeWallColor/SetWallType/TypeText").GetComponent<TextMeshProUGUI>();
+		UICostumizeWallColorColor0 = transform.Find("CostumizeWallColor/Color0").GetComponent<Image>();
+		UICostumizeWallColorColor1 = transform.Find("CostumizeWallColor/Color1").GetComponent<Button>();
+		UICostumizeWallColorColor2 = transform.Find("CostumizeWallColor/Color2").GetComponent<Button>();
+		UICostumizeWallColorColor3 = transform.Find("CostumizeWallColor/Color3").GetComponent<Button>();
+		UICostumizeWallColorColor4 = transform.Find("CostumizeWallColor/Color4").GetComponent<Button>();
+		UICostumizeWallColorColor5 = transform.Find("CostumizeWallColor/Color5").GetComponent<Button>();
+		UICostumizeWallColorColor6 = transform.Find("CostumizeWallColor/Color6").GetComponent<Button>();
+		UICostumizeWallColorColor7 = transform.Find("CostumizeWallColor/Color7").GetComponent<Button>();
+		UICostumizeWallColorColor8 = transform.Find("CostumizeWallColor/Color8").GetComponent<Button>();
+		UICostumizeWallColorColor9 = transform.Find("CostumizeWallColor/Color9").GetComponent<Button>();
+		UICostumizeWallColorColor10 = transform.Find("CostumizeWallColor/Color10").GetComponent<Button>();
+		UICostumizeWallColorColor11 = transform.Find("CostumizeWallColor/Color11").GetComponent<Button>();
+		UICostumizeWallColorColor12 = transform.Find("CostumizeWallColor/Color12").GetComponent<Button>();
+		UICostumizeWallColorColor13 = transform.Find("CostumizeWallColor/Color13").GetComponent<Button>();
+		UICostumizeWallColorColor14 = transform.Find("CostumizeWallColor/Color14").GetComponent<Button>();
+		UICostumizeWallColorColor15 = transform.Find("CostumizeWallColor/Color15").GetComponent<Button>();
+		UICostumizeWallColorColor16 = transform.Find("CostumizeWallColor/Color16").GetComponent<Button>();
+		UICostumizeWallColorColor17 = transform.Find("CostumizeWallColor/Color17").GetComponent<Button>();
+		UICostumizeWallColorColor18 = transform.Find("CostumizeWallColor/Color18").GetComponent<Button>();
+		UICostumizeWallColorColor19 = transform.Find("CostumizeWallColor/Color19").GetComponent<Button>();
+		UICostumizeWallColorRInputSlider = transform.Find("CostumizeWallColor/RInputSlider").GetComponent<InputSliderComponent>();
+		UICostumizeWallColorGInputSlider = transform.Find("CostumizeWallColor/GInputSlider").GetComponent<InputSliderComponent>();
+		UICostumizeWallColorBInputSlider = transform.Find("CostumizeWallColor/BInputSlider").GetComponent<InputSliderComponent>();
+		UIMovementButtons = transform.Find("MovementButtons").GetComponent<RectTransform>();
 		UIMovementButtonsTopViewButton = transform.Find("MovementButtons/TopViewButton").GetComponent<Button>();
 		UIMovementButtonsTopViewButtonText = transform.Find("MovementButtons/TopViewButton/Text").GetComponent<TextMeshProUGUI>();
 		UIMovementButtonsFreeRoamButton = transform.Find("MovementButtons/FreeRoamButton").GetComponent<Button>();

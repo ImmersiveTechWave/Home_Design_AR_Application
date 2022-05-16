@@ -30,26 +30,26 @@ namespace AF
 					{
 						var editWallState = gameStateManager.FindState<EditWallState>();
 
+						var wallCollider = rayHit.collider;
+
+						if (wallCollider.name == WallFaceController.FIRST_FACE)
+						{
+							App.SelectedWallFace = SelectedWallFace.FirstFace;
+						}
+						else if (wallCollider.name == WallFaceController.SECOND_FACE)
+						{
+							App.SelectedWallFace = SelectedWallFace.SecondFace;
+						}
+
 						switch (editWallState.SelectedWallType)
 						{
 							case SelectedWallType.PartialWall:
-								var wallCollider = rayHit.collider;
-
-								if (wallCollider.name == WallFaceController.FIRST_FACE)
-								{
-									App.SelectedWallFace = SelectedWallFace.FirstFace;
-								}
-								else if (wallCollider.name == WallFaceController.SECOND_FACE)
-								{
-									App.SelectedWallFace = SelectedWallFace.SecondFace;
-								}
-
 								var simpleWall = wallCollider.gameObject.GetComponentInParent<PartialWallController>();
 								simpleWall?.Select();
 								break;
 
 							case SelectedWallType.EntireWall:
-								var completeWall = rayHit.collider.gameObject.GetComponentInParent<WallController>();
+								var completeWall = wallCollider.gameObject.GetComponentInParent<WallController>();
 								completeWall?.Select();
 								break;
 						}
@@ -61,6 +61,11 @@ namespace AF
 					{
 						App.SelectedPartialWall.View.SelectObject.Deselect();
 						App.SelectedPartialWall = null;
+					}
+					if (App.SelectedWall != null)
+					{
+						App.SelectedWall.Deselect();
+						App.SelectedWall = null;
 					}
 				}
 			}

@@ -31,7 +31,7 @@ namespace AF
 			SetButtonsTextColor(ColorUtils.BLUE_COLOR);
 			MainScreen.ScreenView.UILeftBarMenuImageHolderPartialWallButton.gameObject.SetActive(true);
 			MainScreen.ScreenView.UILeftBarMenuImageHolderEntireWallButton.gameObject.SetActive(true);
-			MainScreen.ScreenView.UICostumizeWallScrollView.gameObject.SetActive(true);
+			MainScreen.ScreenView.UICostumizeWallType.gameObject.SetActive(true);
 			SetPartialWallMode();
 		}
 
@@ -45,7 +45,8 @@ namespace AF
 			SetButtonsTextColor(ColorUtils.WHITE_COLOR);
 			MainScreen.ScreenView.UILeftBarMenuImageHolderPartialWallButton.gameObject.SetActive(false);
 			MainScreen.ScreenView.UILeftBarMenuImageHolderEntireWallButton.gameObject.SetActive(false);
-			MainScreen.ScreenView.UICostumizeWallScrollView.gameObject.SetActive(false);
+			MainScreen.ScreenView.UICostumizeWallType.gameObject.SetActive(false);
+			MainScreen.ScreenView.UICostumizeWallColor.gameObject.SetActive(false);
 		}
 
 		private void SetPartialWallMode()
@@ -55,6 +56,7 @@ namespace AF
 			SelectedWallType = SelectedWallType.PartialWall;
 			MainScreen.ScreenView.UILeftBarMenuImageHolderEntireWallButtonText.color = ColorUtils.WHITE_COLOR;
 			MainScreen.ScreenView.UILeftBarMenuImageHolderPartialWallButtonText.color = ColorUtils.BLUE_COLOR;
+			MainScreen.ScreenView.UIDeleteButton.gameObject.SetActive(false);
 		}
 
 		private void SetEntireWallMode()
@@ -64,6 +66,7 @@ namespace AF
 			SelectedWallType = SelectedWallType.EntireWall;
 			MainScreen.ScreenView.UILeftBarMenuImageHolderPartialWallButtonText.color = ColorUtils.WHITE_COLOR;
 			MainScreen.ScreenView.UILeftBarMenuImageHolderEntireWallButtonText.color = ColorUtils.BLUE_COLOR;
+			MainScreen.ScreenView.UIDeleteButton.gameObject.SetActive(true);
 		}
 
 		private void SetButtonsTextColor(Color32 color)

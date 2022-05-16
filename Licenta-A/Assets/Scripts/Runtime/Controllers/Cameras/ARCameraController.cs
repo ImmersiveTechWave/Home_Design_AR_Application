@@ -51,17 +51,16 @@ namespace AF
 
 		private void ConsumeMobileUserInput()
 		{
-			var newPosition = aRSessionOrigin.transform.position;
 			var heightInput = InputController.MoveCamera.MoveHeight.ReadValue<Vector2>();
 			var moveInput = InputController.MoveCamera.Move.ReadValue<Vector2>();
 			var rotationInput = InputController.MoveCamera.Rotate.ReadValue<Vector2>();
 
-			newPosition.x += moveInput.x * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			newPosition.y += heightInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			newPosition.z += moveInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+			var newYPosition = aRSessionOrigin.transform.position.y + heightInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+			aRSessionOrigin.transform.position += aRSessionOrigin.transform.forward * moveInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+			aRSessionOrigin.transform.position += aRSessionOrigin.transform.right * moveInput.x * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 
-			newPosition.y = Mathf.Clamp(newPosition.y, MIN_NEW_POSITION, MAX_NEW_POSITION);
-			aRSessionOrigin.transform.position = newPosition;
+			newYPosition = Mathf.Clamp(newYPosition, MIN_NEW_POSITION, MAX_NEW_POSITION);
+			aRSessionOrigin.transform.position = new Vector3(aRSessionOrigin.transform.position.x, newYPosition, aRSessionOrigin.transform.position.z);
 			aRSessionOrigin.transform.Rotate(0.0f, rotationInput.x * MOBILE_CAMERA_ROTATION_SPEED * Time.deltaTime, 0.0f, Space.World);
 			aRSessionOrigin.transform.Rotate(rotationInput.y * MOBILE_CAMERA_ROTATION_SPEED * Time.deltaTime, 0.0f, 0.0f, Space.Self);
 		}

@@ -31,5 +31,15 @@ namespace AF
 					break;
 			}
 		}
+
+		public void SetFirstFaceMaterial(Material material)
+		{
+			FirstFaceRenderer.material = new Material(material);
+		}
+
+		public void SetSecondFaceMaterial(Material material)
+		{
+			SecondFaceRenderer.material = new Material(material);
+		}
 	}
 }
