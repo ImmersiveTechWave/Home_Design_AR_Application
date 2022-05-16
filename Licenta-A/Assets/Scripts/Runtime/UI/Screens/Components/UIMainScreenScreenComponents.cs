@@ -8,6 +8,8 @@ namespace AF.UI
 {
 public class UIMainScreenScreenComponents : MonoBehaviour
 {
+	public Button UIDeleteButton{ get; protected set; }
+	public Image UIDeleteButtonImage{ get; protected set; }
 	public Image UILeftBarMenuImage{ get; protected set; }
 	public Button UILeftBarMenuImageMenuButton{ get; protected set; }
 	public RectTransform UILeftBarMenuImageHolder{ get; protected set; }
@@ -79,6 +81,8 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 
 	private void Awake()
 	{
+		UIDeleteButton = transform.Find("DeleteButton").GetComponent<Button>();
+		UIDeleteButtonImage = transform.Find("DeleteButton/Image").GetComponent<Image>();
 		UILeftBarMenuImage = transform.Find("LeftBarMenuImage").GetComponent<Image>();
 		UILeftBarMenuImageMenuButton = transform.Find("LeftBarMenuImage/MenuButton").GetComponent<Button>();
 		UILeftBarMenuImageHolder = transform.Find("LeftBarMenuImage/Holder").GetComponent<RectTransform>();

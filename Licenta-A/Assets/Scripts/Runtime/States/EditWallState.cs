@@ -56,6 +56,7 @@ namespace AF
 			SelectedWallType = SelectedWallType.PartialWall;
 			MainScreen.ScreenView.UILeftBarMenuImageHolderEntireWallButtonText.color = ColorUtils.WHITE_COLOR;
 			MainScreen.ScreenView.UILeftBarMenuImageHolderPartialWallButtonText.color = ColorUtils.BLUE_COLOR;
+			MainScreen.ScreenView.UIDeleteButton.gameObject.SetActive(false);
 		}
 
 		private void SetEntireWallMode()
@@ -65,6 +66,7 @@ namespace AF
 			SelectedWallType = SelectedWallType.EntireWall;
 			MainScreen.ScreenView.UILeftBarMenuImageHolderPartialWallButtonText.color = ColorUtils.WHITE_COLOR;
 			MainScreen.ScreenView.UILeftBarMenuImageHolderEntireWallButtonText.color = ColorUtils.BLUE_COLOR;
+			MainScreen.ScreenView.UIDeleteButton.gameObject.SetActive(true);
 		}
 
 		private void SetButtonsTextColor(Color32 color)

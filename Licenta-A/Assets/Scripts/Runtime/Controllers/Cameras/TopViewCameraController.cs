@@ -74,6 +74,7 @@ namespace AF
 		{
 			base.EnterState();
 			MainScreen.ScreenView.UIJoysticksRotationJoystick.gameObject.SetActive(false);
+			MainScreen.ScreenView.UILeftBarMenuImageHolderEditWallButton.gameObject.SetActive(false);
 			SetButtonsTextColor(ColorUtils.BLUE_COLOR);
 		}
 
@@ -81,6 +82,7 @@ namespace AF
 		{
 			base.ExitState();
 			SetButtonsTextColor(ColorUtils.WHITE_COLOR);
+			MainScreen.ScreenView.UILeftBarMenuImageHolderEditWallButton.gameObject.SetActive(true);
 		}
 
 		private void SetButtonsTextColor(Color32 color)

@@ -30,7 +30,6 @@ namespace AF.UI
 		private ButtonMaterial ButtonMaterial_18;
 		private ButtonMaterial ButtonMaterial_19;
 
-
 		override public void Awake()
 		{
 			base.Awake();
@@ -52,25 +51,7 @@ namespace AF.UI
 			ScreenView.UILeftBarMenuImageHolderEditWallButton.onClick.AddListener(ChangeToCostumizeWallState);
 			ScreenView.UILeftBarMenuImageHolderMovementButton.onClick.AddListener(ChangeToMovementState);
 
-			ScreenView.UICostumizeWallColorColor1.onClick.AddListener(SetWallMaterial_1);
-			ScreenView.UICostumizeWallColorColor2.onClick.AddListener(SetWallMaterial_2);
-			ScreenView.UICostumizeWallColorColor3.onClick.AddListener(SetWallMaterial_3);
-			ScreenView.UICostumizeWallColorColor4.onClick.AddListener(SetWallMaterial_4);
-			ScreenView.UICostumizeWallColorColor5.onClick.AddListener(SetWallMaterial_5);
-			ScreenView.UICostumizeWallColorColor6.onClick.AddListener(SetWallMaterial_6);
-			ScreenView.UICostumizeWallColorColor7.onClick.AddListener(SetWallMaterial_7);
-			ScreenView.UICostumizeWallColorColor8.onClick.AddListener(SetWallMaterial_8);
-			ScreenView.UICostumizeWallColorColor9.onClick.AddListener(SetWallMaterial_9);
-			ScreenView.UICostumizeWallColorColor10.onClick.AddListener(SetWallMaterial_10);
-			ScreenView.UICostumizeWallColorColor11.onClick.AddListener(SetWallMaterial_11);
-			ScreenView.UICostumizeWallColorColor12.onClick.AddListener(SetWallMaterial_12);
-			ScreenView.UICostumizeWallColorColor13.onClick.AddListener(SetWallMaterial_13);
-			ScreenView.UICostumizeWallColorColor14.onClick.AddListener(SetWallMaterial_14);
-			ScreenView.UICostumizeWallColorColor15.onClick.AddListener(SetWallMaterial_15);
-			ScreenView.UICostumizeWallColorColor16.onClick.AddListener(SetWallMaterial_16);
-			ScreenView.UICostumizeWallColorColor17.onClick.AddListener(SetWallMaterial_17);
-			ScreenView.UICostumizeWallColorColor18.onClick.AddListener(SetWallMaterial_18);
-			ScreenView.UICostumizeWallColorColor19.onClick.AddListener(SetWallMaterial_19);
+			AddColorButtonsListeners();
 
 			ScreenView.UICostumizeWallColorRInputSlider.onValueChanged.AddListener(SetRWallColor);
 			ScreenView.UICostumizeWallColorGInputSlider.onValueChanged.AddListener(SetGWallColor);
@@ -83,6 +64,15 @@ namespace AF.UI
 			ScreenView.UICostumizeWallTypeSetWallColor.onClick.AddListener(ChangeToSetWallColor);
 
 			ScreenView.UICostumizeWallColorSetRGBColor.onClick.AddListener(SetRGBWallColor);
+			ScreenView.UIDeleteButton.onClick.AddListener(DeleteWall);
+		}
+
+		private void DeleteWall()
+		{
+			if (App.SelectedWall != null)
+			{
+				App.SelectedWall.Delete();
+			}
 		}
 
 		private void ChangeToSetWallType()
@@ -129,6 +119,72 @@ namespace AF.UI
 			var colorMaterial = new Material(ButtonMaterial_0.Material);
 			colorMaterial.color = ScreenView.UICostumizeWallColorColor0.color;
 			SetWallMaterial(colorMaterial);
+		}
+
+		private void SetWallMaterial(Material material)
+		{
+			if (App.SelectedPartialWall != null)
+			{
+				App.SelectedPartialWall.View?.WallFaceController?.SetFaceMaterial(material);
+			}
+			else if (App.SelectedWall != null)
+			{
+				App.SelectedWall.SetFaceMaterial(material);
+			}
+		}
+
+		private void ChangeToCostumizeWallState()
+		{
+			gameStateManager.SwitchState<EditWallState>();
+			ChangeToSetWallType();
+		}
+
+		private void ChangeToMovementState()
+		{
+			gameStateManager.SwitchState<MovementState>();
+		}
+
+		private void ChangeToCreateWallState()
+		{
+			gameStateManager.SwitchState<CreateWallState>();
+		}
+
+		private void ChangeToAR()
+		{
+			cameraManager.ChangeToARCamera();
+		}
+
+		private void ChangeToTopView()
+		{
+			cameraManager.ChangeToTopViewCamera();
+		}
+
+		private void ChangeToFreeRoam()
+		{
+			cameraManager.ChangeToFreeRoamCamera();
+		}
+
+		private void AddColorButtonsListeners()
+		{
+			ScreenView.UICostumizeWallColorColor1.onClick.AddListener(SetWallMaterial_1);
+			ScreenView.UICostumizeWallColorColor2.onClick.AddListener(SetWallMaterial_2);
+			ScreenView.UICostumizeWallColorColor3.onClick.AddListener(SetWallMaterial_3);
+			ScreenView.UICostumizeWallColorColor4.onClick.AddListener(SetWallMaterial_4);
+			ScreenView.UICostumizeWallColorColor5.onClick.AddListener(SetWallMaterial_5);
+			ScreenView.UICostumizeWallColorColor6.onClick.AddListener(SetWallMaterial_6);
+			ScreenView.UICostumizeWallColorColor7.onClick.AddListener(SetWallMaterial_7);
+			ScreenView.UICostumizeWallColorColor8.onClick.AddListener(SetWallMaterial_8);
+			ScreenView.UICostumizeWallColorColor9.onClick.AddListener(SetWallMaterial_9);
+			ScreenView.UICostumizeWallColorColor10.onClick.AddListener(SetWallMaterial_10);
+			ScreenView.UICostumizeWallColorColor11.onClick.AddListener(SetWallMaterial_11);
+			ScreenView.UICostumizeWallColorColor12.onClick.AddListener(SetWallMaterial_12);
+			ScreenView.UICostumizeWallColorColor13.onClick.AddListener(SetWallMaterial_13);
+			ScreenView.UICostumizeWallColorColor14.onClick.AddListener(SetWallMaterial_14);
+			ScreenView.UICostumizeWallColorColor15.onClick.AddListener(SetWallMaterial_15);
+			ScreenView.UICostumizeWallColorColor16.onClick.AddListener(SetWallMaterial_16);
+			ScreenView.UICostumizeWallColorColor17.onClick.AddListener(SetWallMaterial_17);
+			ScreenView.UICostumizeWallColorColor18.onClick.AddListener(SetWallMaterial_18);
+			ScreenView.UICostumizeWallColorColor19.onClick.AddListener(SetWallMaterial_19);
 		}
 
 		private void SetWallMaterial_1()
@@ -232,49 +288,6 @@ namespace AF.UI
 			var newMaterial = ButtonMaterial_19.Material;
 			newMaterial.color = ScreenView.UICostumizeWallColorColor19.image.color;
 			SetWallMaterial(newMaterial);
-		}
-
-		private void SetWallMaterial(Material material)
-		{
-			if (App.SelectedPartialWall != null)
-			{
-				App.SelectedPartialWall.View?.WallFaceController?.SetFaceMaterial(material);
-			}
-			else if (App.SelectedWall != null)
-			{
-				App.SelectedWall.SetFaceMaterial(material);
-			}
-		}
-
-		private void ChangeToCostumizeWallState()
-		{
-			gameStateManager.SwitchState<EditWallState>();
-			ChangeToSetWallType();
-		}
-
-		private void ChangeToMovementState()
-		{
-			gameStateManager.SwitchState<MovementState>();
-		}
-
-		private void ChangeToCreateWallState()
-		{
-			gameStateManager.SwitchState<CreateWallState>();
-		}
-
-		private void ChangeToAR()
-		{
-			cameraManager.ChangeToARCamera();
-		}
-
-		private void ChangeToTopView()
-		{
-			cameraManager.ChangeToTopViewCamera();
-		}
-
-		private void ChangeToFreeRoam()
-		{
-			cameraManager.ChangeToFreeRoamCamera();
 		}
 
 		private void GetAllButtonsMaterial()

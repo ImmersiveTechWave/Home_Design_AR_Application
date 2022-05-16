@@ -99,7 +99,7 @@ namespace AF
 				var wallController = new GameObject().AddComponent<WallController>();
 
 				// Create the Left Wall
-				var leftWallPosition = startWallGO.transform.position + previewWallGO.transform.forward * (difference / WALL_LENGHT);
+				var leftWallPosition = startWallGO.transform.position + previewWallGO.transform.forward * (difference / (WALL_LENGHT * 2));
 				var leftWall = Instantiate(partialWallResource, leftWallPosition, previewWallGO.transform.rotation);
 				leftWall.transform.localScale = new Vector3(leftWall.transform.localScale.x, leftWall.transform.localScale.y, difference / (WALL_LENGHT * 2));
 				wallController.AddNewSimpleWalls(leftWall);

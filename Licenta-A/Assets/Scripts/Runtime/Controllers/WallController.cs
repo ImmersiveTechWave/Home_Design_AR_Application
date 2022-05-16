@@ -16,9 +16,16 @@ namespace AF
 			simpleWall.transform.SetParent(transform);
 		}
 
+		public void Delete()
+		{
+			Deselect();
+			App.SelectedWall = null;
+			Destroy(gameObject);
+		}
+
 		public void SetFaceMaterial(Material material)
 		{
-			foreach(var wall in partialWalls)
+			foreach (var wall in partialWalls)
 			{
 				wall.View?.WallFaceController?.SetFaceMaterial(material);
 			}

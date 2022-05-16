@@ -22,17 +22,16 @@ namespace AF
 
 		private void ConsumeMobileUserInput()
 		{
-			var newPosition = transform.position;
 			var heightInput = InputController.MoveCamera.MoveHeight.ReadValue<Vector2>();
 			var moveInput = InputController.MoveCamera.Move.ReadValue<Vector2>();
 			var rotationInput = InputController.MoveCamera.Rotate.ReadValue<Vector2>();
 
-			newPosition.x += moveInput.x * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			newPosition.y += heightInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
-			newPosition.z += moveInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+			var newYPosition = transform.position.y + heightInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+			transform.position += transform.forward * moveInput.y * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
+			transform.position += transform.right * moveInput.x * MOBILE_CAMERA_MOVEMENT_SPEED * Time.deltaTime;
 
-			newPosition.y = Mathf.Clamp(newPosition.y, MIN_NEW_POSITION, MAX_NEW_POSITION);
-			transform.position = newPosition;
+			newYPosition = Mathf.Clamp(newYPosition, MIN_NEW_POSITION, MAX_NEW_POSITION);
+			transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
 			transform.Rotate(0.0f, rotationInput.x * MOBILE_CAMERA_ROTATION_SPEED * Time.deltaTime, 0.0f, Space.World);
 			transform.Rotate(rotationInput.y * MOBILE_CAMERA_ROTATION_SPEED * Time.deltaTime, 0.0f, 0.0f, Space.Self);
 		}
