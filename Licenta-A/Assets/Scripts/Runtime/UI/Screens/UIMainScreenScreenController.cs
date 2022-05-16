@@ -254,7 +254,9 @@ namespace AF.UI
 
 		private void SetWallMaterial_14()
 		{
-			SetWallMaterial(ButtonMaterial_14.Material);
+			var newMaterial = ButtonMaterial_14.Material;
+			newMaterial.color = ScreenView.UICostumizeWallColorColor14.image.color;
+			SetWallMaterial(newMaterial);
 		}
 
 		private void SetWallMaterial_15()
@@ -273,7 +275,9 @@ namespace AF.UI
 
 		private void SetWallMaterial_17()
 		{
-			SetWallMaterial(ButtonMaterial_17.Material);
+			var newMaterial = ButtonMaterial_17.Material;
+			newMaterial.color = ScreenView.UICostumizeWallColorColor17.image.color;
+			SetWallMaterial(newMaterial);
 		}
 
 		private void SetWallMaterial_18()
