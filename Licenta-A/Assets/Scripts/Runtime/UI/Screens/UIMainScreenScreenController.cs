@@ -50,6 +50,7 @@ namespace AF.UI
 			ScreenView.UILeftBarMenuImageHolderCreateWallButton.onClick.AddListener(ChangeToCreateWallState);
 			ScreenView.UILeftBarMenuImageHolderEditWallButton.onClick.AddListener(ChangeToCostumizeWallState);
 			ScreenView.UILeftBarMenuImageHolderMovementButton.onClick.AddListener(ChangeToMovementState);
+			ScreenView.UILeftBarMenuImageHolderAddObjectsButton.onClick.AddListener(ChangeToAddObject);
 
 			AddColorButtonsListeners();
 
@@ -137,6 +138,11 @@ namespace AF.UI
 		{
 			gameStateManager.SwitchState<EditWallState>();
 			ChangeToSetWallType();
+		}
+
+		private void ChangeToAddObject()
+		{
+			gameStateManager.SwitchState<AddObjectsState>();
 		}
 
 		private void ChangeToMovementState()
