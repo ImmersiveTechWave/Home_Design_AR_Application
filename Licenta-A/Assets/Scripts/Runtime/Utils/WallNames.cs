@@ -19,8 +19,14 @@ namespace AF
         public const string BEST_MARGIN_SPHERE = "Prefabes/BestMarginSphere";
     }
 
-    public static class WallUIPaths
+    public static class UIPaths
     {
-        public const string ALL_WALL_PATH = "Prefabes/UIWalls";
+        public const string ALL_UI_WALL_PATH = "Prefabes/UIWalls";
+        public const string ALL_UI_OBJECTS_PATH = "Prefabes/UIObjects";
+    }
+
+    public static class ObjectsPath
+    {
+        public const string ALL_OBJECTS_PATH = "Prefabes/Objects";
     }
 }

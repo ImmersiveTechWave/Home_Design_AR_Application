@@ -41,6 +41,7 @@ namespace AF.UI
 		private void Start()
 		{
 			AddUIWalls();
+			AddUIObjects();
 			GetAllButtonsMaterial();
 			SetAllButtonsTexture();
 			ScreenView.UIMovementButtonsTopViewButton.onClick.AddListener(ChangeToTopView);
@@ -345,11 +346,21 @@ namespace AF.UI
 
 		private void AddUIWalls()
 		{
-			var UIWalls = Resources.LoadAll<CostumizeWallController>(WallUIPaths.ALL_WALL_PATH);
+			var UIWalls = Resources.LoadAll<CostumizeWallController>(UIPaths.ALL_UI_WALL_PATH);
 			foreach (var wall in UIWalls)
 			{
 				var wallGO = Instantiate(wall, Vector3.zero, Quaternion.identity);
 				wallGO.transform.SetParent(ScreenView.UICostumizeWallTypeViewportContent.transform);
+			}
+		}
+
+		private void AddUIObjects()
+		{
+			var UIObjects = Resources.LoadAll<ObjectUIController>(UIPaths.ALL_UI_OBJECTS_PATH);
+			foreach (var objects in UIObjects)
+			{
+				var objectGO = Instantiate(objects, Vector3.zero, Quaternion.identity);
+				objectGO.transform.SetParent(ScreenView.UIAddObjectsPanelViewportContent.transform);
 			}
 		}
 	}
