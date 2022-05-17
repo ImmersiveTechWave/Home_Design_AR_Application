@@ -91,7 +91,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
-    - _BaseColorIntensity: 32.4
+    - _BaseColorIntensity: 73.4
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -109,7 +109,7 @@ Material:
     - _FresnelBias: 0
     - _FresnelPower: 3.08
     - _FresnelPower2: 2.32
-    - _FresnelScale: 0.28
+    - _FresnelScale: 10
     - _FresnelScale2: 1.99
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -130,7 +130,7 @@ Material:
     - _Surface: 0
     - _TimeScale: 0.2
     - _TimeScale2: 1
-    - _TriplanarFalloff: 5.47
+    - _TriplanarFalloff: 5.64
     - _TriplanarPanningSpeed: 0.127
     - _Use_Triplanar: 1
     - _Visibility: 1
@@ -140,7 +140,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.24280262, b: 0, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DistortionColorMul: {r: 0.43867904, g: 0.5749998, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

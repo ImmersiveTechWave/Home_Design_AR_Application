@@ -8,5 +8,6 @@ namespace AF
 		public static PartialWallController SelectedPartialWall;
 		public static WallController SelectedWall;
 		public static SelectedWallFace SelectedWallFace = SelectedWallFace.None;
+		public static GizmoType GizmoType = GizmoType.Default;
 	}
 }

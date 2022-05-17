@@ -73,7 +73,7 @@ namespace AF
 
 		public Vector3 GetWorldPoint()
 		{
-			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			var ray = App.ActiveCamera.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out var hit, Mathf.Infinity, LayerMask.GetMask(LayersName.PLANE)))
 			{
 				return hit.point;

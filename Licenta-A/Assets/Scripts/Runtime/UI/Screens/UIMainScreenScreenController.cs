@@ -8,6 +8,7 @@ namespace AF.UI
 
 		private CameraManager cameraManager;
 		private GameStateManager gameStateManager;
+		private ObjectManager objectManager;
 
 		private ButtonMaterial ButtonMaterial_0;
 		private ButtonMaterial ButtonMaterial_1;
@@ -36,11 +37,13 @@ namespace AF.UI
 			ScreenView = GetComponent<UIMainScreenScreenComponents>();
 			cameraManager = FindObjectOfType<CameraManager>();
 			gameStateManager = FindObjectOfType<GameStateManager>();
+			objectManager = FindObjectOfType<ObjectManager>();
 		}
 
 		private void Start()
 		{
 			AddUIWalls();
+			AddUIObjects();
 			GetAllButtonsMaterial();
 			SetAllButtonsTexture();
 			ScreenView.UIMovementButtonsTopViewButton.onClick.AddListener(ChangeToTopView);
@@ -50,6 +53,7 @@ namespace AF.UI
 			ScreenView.UILeftBarMenuImageHolderCreateWallButton.onClick.AddListener(ChangeToCreateWallState);
 			ScreenView.UILeftBarMenuImageHolderEditWallButton.onClick.AddListener(ChangeToCostumizeWallState);
 			ScreenView.UILeftBarMenuImageHolderMovementButton.onClick.AddListener(ChangeToMovementState);
+			ScreenView.UILeftBarMenuImageHolderAddObjectsButton.onClick.AddListener(ChangeToAddObject);
 
 			AddColorButtonsListeners();
 
@@ -65,6 +69,47 @@ namespace AF.UI
 
 			ScreenView.UICostumizeWallColorSetRGBColor.onClick.AddListener(SetRGBWallColor);
 			ScreenView.UIDeleteButton.onClick.AddListener(DeleteWall);
+
+			ScreenView.UIGizmoHolderRotateButton.onClick.AddListener(SetRotateGizmoStatus);
+			ScreenView.UIGizmoHolderTranslateButton.onClick.AddListener(SetTranslateGizmoStatus);
+		}
+
+		private void SetRotateGizmoStatus()
+		{
+			if (App.GizmoType == GizmoType.Default || App.GizmoType == GizmoType.Translate)
+			{
+				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.WHITE_COLOR;
+				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.BLUE_COLOR;
+				App.GizmoType = GizmoType.Rotate;
+				objectManager.SetAllTranslateGizmoState(false);
+				objectManager.SetAllRotateGizmoState(true);
+			}
+			else if (App.GizmoType == GizmoType.Rotate)
+			{
+				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.WHITE_COLOR;
+				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.WHITE_COLOR;
+				App.GizmoType = GizmoType.Default;
+				objectManager.SetAllRotateGizmoState(false);
+			}
+		}
+
+		private void SetTranslateGizmoStatus()
+		{
+			if (App.GizmoType == GizmoType.Default || App.GizmoType == GizmoType.Rotate)
+			{
+				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.WHITE_COLOR;
+				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.BLUE_COLOR;
+				App.GizmoType = GizmoType.Translate;
+				objectManager.SetAllRotateGizmoState(false);
+				objectManager.SetAllTranslateGizmoState(true);
+			}
+			else if (App.GizmoType == GizmoType.Translate)
+			{
+				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.WHITE_COLOR;
+				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.WHITE_COLOR;
+				App.GizmoType = GizmoType.Default;
+				objectManager.SetAllTranslateGizmoState(false);
+			}
 		}
 
 		private void DeleteWall()
@@ -137,6 +182,11 @@ namespace AF.UI
 		{
 			gameStateManager.SwitchState<EditWallState>();
 			ChangeToSetWallType();
+		}
+
+		private void ChangeToAddObject()
+		{
+			gameStateManager.SwitchState<AddObjectsState>();
 		}
 
 		private void ChangeToMovementState()
@@ -339,11 +389,21 @@ namespace AF.UI
 
 		private void AddUIWalls()
 		{
-			var UIWalls = Resources.LoadAll<CostumizeWallController>(WallUIPaths.ALL_WALL_PATH);
+			var UIWalls = Resources.LoadAll<CostumizeWallController>(UIPaths.ALL_UI_WALL_PATH);
 			foreach (var wall in UIWalls)
 			{
 				var wallGO = Instantiate(wall, Vector3.zero, Quaternion.identity);
 				wallGO.transform.SetParent(ScreenView.UICostumizeWallTypeViewportContent.transform);
+			}
+		}
+
+		private void AddUIObjects()
+		{
+			var UIObjects = Resources.LoadAll<ObjectUIController>(UIPaths.ALL_UI_OBJECTS_PATH);
+			foreach (var objects in UIObjects)
+			{
+				var objectGO = Instantiate(objects, Vector3.zero, Quaternion.identity);
+				objectGO.transform.SetParent(ScreenView.UIAddObjectsPanelViewportContent.transform);
 			}
 		}
 	}

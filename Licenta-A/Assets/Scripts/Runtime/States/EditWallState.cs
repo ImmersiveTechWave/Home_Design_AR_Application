@@ -47,6 +47,7 @@ namespace AF
 			MainScreen.ScreenView.UILeftBarMenuImageHolderEntireWallButton.gameObject.SetActive(false);
 			MainScreen.ScreenView.UICostumizeWallType.gameObject.SetActive(false);
 			MainScreen.ScreenView.UICostumizeWallColor.gameObject.SetActive(false);
+			MainScreen.ScreenView.UIDeleteButton.gameObject.SetActive(false);
 		}
 
 		private void SetPartialWallMode()

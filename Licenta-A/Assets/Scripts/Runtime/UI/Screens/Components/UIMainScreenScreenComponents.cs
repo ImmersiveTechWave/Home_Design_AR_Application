@@ -17,6 +17,8 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	public TextMeshProUGUI UILeftBarMenuImageHolderMovementButtonText{ get; protected set; }
 	public Button UILeftBarMenuImageHolderCreateWallButton{ get; protected set; }
 	public TextMeshProUGUI UILeftBarMenuImageHolderCreateWallButtonText{ get; protected set; }
+	public Button UILeftBarMenuImageHolderAddObjectsButton{ get; protected set; }
+	public TextMeshProUGUI UILeftBarMenuImageHolderAddObjectsButtonText{ get; protected set; }
 	public Button UILeftBarMenuImageHolderEditWallButton{ get; protected set; }
 	public TextMeshProUGUI UILeftBarMenuImageHolderEditWallButtonText{ get; protected set; }
 	public Button UILeftBarMenuImageHolderPartialWallButton{ get; protected set; }
@@ -26,6 +28,10 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	public Image UILeftBarMenuImageHeightJoystick{ get; protected set; }
 	public Image UILeftBarMenuImageHeightJoystickButton{ get; protected set; }
 	public TextMeshProUGUI UILeftBarMenuImageHeightJoystickButtonText{ get; protected set; }
+	public ScrollRect UIAddObjectsPanel{ get; protected set; }
+	public Image UIAddObjectsPanelViewport{ get; protected set; }
+	public RectTransform UIAddObjectsPanelViewportContent{ get; protected set; }
+	public Scrollbar UIAddObjectsPanelScrollbarHorizontal{ get; protected set; }
 	public ScrollRect UICostumizeWallType{ get; protected set; }
 	public Button UICostumizeWallTypeSetWallColor{ get; protected set; }
 	public TextMeshProUGUI UICostumizeWallTypeSetWallColorText{ get; protected set; }
@@ -78,6 +84,11 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	public Image UIJoysticksRotationJoystick{ get; protected set; }
 	public Image UIJoysticksRotationJoystickButton{ get; protected set; }
 	public TextMeshProUGUI UIJoysticksRotationJoystickButtonText{ get; protected set; }
+	public RectTransform UIGizmoHolder{ get; protected set; }
+	public Button UIGizmoHolderRotateButton{ get; protected set; }
+	public Image UIGizmoHolderRotateButtonImage{ get; protected set; }
+	public Button UIGizmoHolderTranslateButton{ get; protected set; }
+	public Image UIGizmoHolderTranslateButtonImage{ get; protected set; }
 
 	private void Awake()
 	{
@@ -90,6 +101,8 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 		UILeftBarMenuImageHolderMovementButtonText = transform.Find("LeftBarMenuImage/Holder/MovementButton/Text").GetComponent<TextMeshProUGUI>();
 		UILeftBarMenuImageHolderCreateWallButton = transform.Find("LeftBarMenuImage/Holder/CreateWallButton").GetComponent<Button>();
 		UILeftBarMenuImageHolderCreateWallButtonText = transform.Find("LeftBarMenuImage/Holder/CreateWallButton/Text").GetComponent<TextMeshProUGUI>();
+		UILeftBarMenuImageHolderAddObjectsButton = transform.Find("LeftBarMenuImage/Holder/AddObjectsButton").GetComponent<Button>();
+		UILeftBarMenuImageHolderAddObjectsButtonText = transform.Find("LeftBarMenuImage/Holder/AddObjectsButton/Text").GetComponent<TextMeshProUGUI>();
 		UILeftBarMenuImageHolderEditWallButton = transform.Find("LeftBarMenuImage/Holder/EditWallButton").GetComponent<Button>();
 		UILeftBarMenuImageHolderEditWallButtonText = transform.Find("LeftBarMenuImage/Holder/EditWallButton/Text").GetComponent<TextMeshProUGUI>();
 		UILeftBarMenuImageHolderPartialWallButton = transform.Find("LeftBarMenuImage/Holder/PartialWallButton").GetComponent<Button>();
@@ -99,6 +112,10 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 		UILeftBarMenuImageHeightJoystick = transform.Find("LeftBarMenuImage/HeightJoystick").GetComponent<Image>();
 		UILeftBarMenuImageHeightJoystickButton = transform.Find("LeftBarMenuImage/HeightJoystick/Button").GetComponent<Image>();
 		UILeftBarMenuImageHeightJoystickButtonText = transform.Find("LeftBarMenuImage/HeightJoystick/Button/Text").GetComponent<TextMeshProUGUI>();
+		UIAddObjectsPanel = transform.Find("AddObjectsPanel").GetComponent<ScrollRect>();
+		UIAddObjectsPanelViewport = transform.Find("AddObjectsPanel/Viewport").GetComponent<Image>();
+		UIAddObjectsPanelViewportContent = transform.Find("AddObjectsPanel/Viewport/Content").GetComponent<RectTransform>();
+		UIAddObjectsPanelScrollbarHorizontal = transform.Find("AddObjectsPanel/Scrollbar Horizontal").GetComponent<Scrollbar>();
 		UICostumizeWallType = transform.Find("CostumizeWallType").GetComponent<ScrollRect>();
 		UICostumizeWallTypeSetWallColor = transform.Find("CostumizeWallType/SetWallColor").GetComponent<Button>();
 		UICostumizeWallTypeSetWallColorText = transform.Find("CostumizeWallType/SetWallColor/Text").GetComponent<TextMeshProUGUI>();
@@ -151,6 +168,11 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 		UIJoysticksRotationJoystick = transform.Find("Joysticks/RotationJoystick").GetComponent<Image>();
 		UIJoysticksRotationJoystickButton = transform.Find("Joysticks/RotationJoystick/Button").GetComponent<Image>();
 		UIJoysticksRotationJoystickButtonText = transform.Find("Joysticks/RotationJoystick/Button/Text").GetComponent<TextMeshProUGUI>();
+		UIGizmoHolder = transform.Find("GizmoHolder").GetComponent<RectTransform>();
+		UIGizmoHolderRotateButton = transform.Find("GizmoHolder/RotateButton").GetComponent<Button>();
+		UIGizmoHolderRotateButtonImage = transform.Find("GizmoHolder/RotateButton/Image").GetComponent<Image>();
+		UIGizmoHolderTranslateButton = transform.Find("GizmoHolder/TranslateButton").GetComponent<Button>();
+		UIGizmoHolderTranslateButtonImage = transform.Find("GizmoHolder/TranslateButton/Image").GetComponent<Image>();
 	}
 }
 }

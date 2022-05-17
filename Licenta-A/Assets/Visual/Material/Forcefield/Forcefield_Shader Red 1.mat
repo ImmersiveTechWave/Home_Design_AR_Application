@@ -91,7 +91,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
-    - _BaseColorIntensity: 20
+    - _BaseColorIntensity: 100
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2

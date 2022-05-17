@@ -7,8 +7,6 @@ namespace AF
 		private const float DESKTOP_CAMERA_MOVEMENT_SPEED = 10f;
 		private const float MOBILE_CAMERA_MOVEMENT_SPEED = 5f;
 
-		private bool initialRotationJoystickStatus = false;
-
 		private void Update()
 		{
 			if (GameStateManager.IsCurrentState<MovementState>() && ThisIsTheMainCamera)
@@ -68,7 +66,6 @@ namespace AF
 			newOrthographicSize = Mathf.Clamp(newOrthographicSize, MIN_NEW_ORTOGRAPHIC_SIZE, MAX_NEW_ORTOGRAPHIC_SIZE);
 			BaseCamera.orthographicSize = newOrthographicSize;
 		}
-
 
 		public override void EnterState()
 		{
