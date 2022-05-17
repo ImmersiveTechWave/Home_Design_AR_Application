@@ -71,6 +71,8 @@ namespace AF
 			gizmoRotate.enabled = true;
 			SetTranslateDectectorsCamera(App.ActiveCamera);
 			SetRotateDectectorsCamera(App.ActiveCamera);
+			SetTranslateGizmoState(false);
+			SetRotateGizmoState(false);
 		}
 	}
 }

@@ -8,6 +8,7 @@ namespace AF.UI
 
 		private CameraManager cameraManager;
 		private GameStateManager gameStateManager;
+		private ObjectManager objectManager;
 
 		private ButtonMaterial ButtonMaterial_0;
 		private ButtonMaterial ButtonMaterial_1;
@@ -36,6 +37,7 @@ namespace AF.UI
 			ScreenView = GetComponent<UIMainScreenScreenComponents>();
 			cameraManager = FindObjectOfType<CameraManager>();
 			gameStateManager = FindObjectOfType<GameStateManager>();
+			objectManager = FindObjectOfType<ObjectManager>();
 		}
 
 		private void Start()
@@ -67,6 +69,47 @@ namespace AF.UI
 
 			ScreenView.UICostumizeWallColorSetRGBColor.onClick.AddListener(SetRGBWallColor);
 			ScreenView.UIDeleteButton.onClick.AddListener(DeleteWall);
+
+			ScreenView.UIGizmoHolderRotateButton.onClick.AddListener(SetRotateGizmoStatus);
+			ScreenView.UIGizmoHolderTranslateButton.onClick.AddListener(SetTranslateGizmoStatus);
+		}
+
+		private void SetRotateGizmoStatus()
+		{
+			if (App.GizmoType == GizmoType.Default || App.GizmoType == GizmoType.Translate)
+			{
+				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.WHITE_COLOR;
+				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.BLUE_COLOR;
+				App.GizmoType = GizmoType.Rotate;
+				objectManager.SetAllTranslateGizmoState(false);
+				objectManager.SetAllRotateGizmoState(true);
+			}
+			else if (App.GizmoType == GizmoType.Rotate)
+			{
+				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.WHITE_COLOR;
+				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.WHITE_COLOR;
+				App.GizmoType = GizmoType.Default;
+				objectManager.SetAllRotateGizmoState(false);
+			}
+		}
+
+		private void SetTranslateGizmoStatus()
+		{
+			if (App.GizmoType == GizmoType.Default || App.GizmoType == GizmoType.Rotate)
+			{
+				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.WHITE_COLOR;
+				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.BLUE_COLOR;
+				App.GizmoType = GizmoType.Translate;
+				objectManager.SetAllRotateGizmoState(false);
+				objectManager.SetAllTranslateGizmoState(true);
+			}
+			else if (App.GizmoType == GizmoType.Translate)
+			{
+				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.WHITE_COLOR;
+				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.WHITE_COLOR;
+				App.GizmoType = GizmoType.Default;
+				objectManager.SetAllTranslateGizmoState(false);
+			}
 		}
 
 		private void DeleteWall()

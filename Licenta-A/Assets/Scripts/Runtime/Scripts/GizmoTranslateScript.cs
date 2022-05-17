@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using AF;
 
 /// <summary>
 ///     Simple script to handle the functionality of the Translate Gizmo (i.e. move the gizmo
@@ -61,9 +62,8 @@ public class GizmoTranslateScript : MonoBehaviour {
     public void Update() {
         for (int i = 0; i < 3; i++) {
             if (Input.GetMouseButton(0) && Detectors[i].pressing) {
-
                 // Get the distance from the camera to the target (used as a scaling factor in translate)
-                float distance = Vector3.Distance(Camera.main.transform.position, translateTarget.transform.position);
+                float distance = Vector3.Distance(App.ActiveCamera.transform.position, translateTarget.transform.position);
                 distance = distance * 2.0f;
 
                 // Will store translate values

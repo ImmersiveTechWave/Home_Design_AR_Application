@@ -84,6 +84,11 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	public Image UIJoysticksRotationJoystick{ get; protected set; }
 	public Image UIJoysticksRotationJoystickButton{ get; protected set; }
 	public TextMeshProUGUI UIJoysticksRotationJoystickButtonText{ get; protected set; }
+	public RectTransform UIGizmoHolder{ get; protected set; }
+	public Button UIGizmoHolderRotateButton{ get; protected set; }
+	public Image UIGizmoHolderRotateButtonImage{ get; protected set; }
+	public Button UIGizmoHolderTranslateButton{ get; protected set; }
+	public Image UIGizmoHolderTranslateButtonImage{ get; protected set; }
 
 	private void Awake()
 	{
@@ -163,6 +168,11 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 		UIJoysticksRotationJoystick = transform.Find("Joysticks/RotationJoystick").GetComponent<Image>();
 		UIJoysticksRotationJoystickButton = transform.Find("Joysticks/RotationJoystick/Button").GetComponent<Image>();
 		UIJoysticksRotationJoystickButtonText = transform.Find("Joysticks/RotationJoystick/Button/Text").GetComponent<TextMeshProUGUI>();
+		UIGizmoHolder = transform.Find("GizmoHolder").GetComponent<RectTransform>();
+		UIGizmoHolderRotateButton = transform.Find("GizmoHolder/RotateButton").GetComponent<Button>();
+		UIGizmoHolderRotateButtonImage = transform.Find("GizmoHolder/RotateButton/Image").GetComponent<Image>();
+		UIGizmoHolderTranslateButton = transform.Find("GizmoHolder/TranslateButton").GetComponent<Button>();
+		UIGizmoHolderTranslateButtonImage = transform.Find("GizmoHolder/TranslateButton/Image").GetComponent<Image>();
 	}
 }
 }
