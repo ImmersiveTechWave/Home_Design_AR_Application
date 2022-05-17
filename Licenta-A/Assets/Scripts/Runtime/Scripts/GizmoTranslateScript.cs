@@ -14,145 +14,162 @@ using AF;
 /// <version>
 ///     1.0.0 - 01st January 2016
 /// </version>
-public class GizmoTranslateScript : MonoBehaviour {
+public class GizmoTranslateScript : MonoBehaviour
+{
 
-    /// <summary>
-    ///     X axis of gizmo
-    /// </summary>
-    public GameObject xAxisObject;
+	private const float SPEED = 20f;
 
-    /// <summary>
-    ///     Y axis of gizmo
-    /// </summary>
-    public GameObject yAxisObject;
+	/// <summary>
+	///     X axis of gizmo
+	/// </summary>
+	public GameObject xAxisObject;
 
-    /// <summary>
-    ///     Z axis of gizmo
-    /// </summary>
-    public GameObject zAxisObject;
+	/// <summary>
+	///     Y axis of gizmo
+	/// </summary>
+	public GameObject yAxisObject;
 
-    /// <summary>
-    ///     Target for translation
-    /// </summary>
-    public GameObject translateTarget;
+	/// <summary>
+	///     Z axis of gizmo
+	/// </summary>
+	public GameObject zAxisObject;
 
-    /// <summary>
-    ///     Array of detector scripts stored as [x, y, z]
-    /// </summary>
-    public GizmoClickDetection[] Detectors;
+	/// <summary>
+	///     Target for translation
+	/// </summary>
+	public GameObject translateTarget;
 
-    /// <summary>
-    ///     On wake up
-    /// </summary>
-    public void Awake() {
+	/// <summary>
+	///     Array of detector scripts stored as [x, y, z]
+	/// </summary>
+	public GizmoClickDetection[] Detectors;
 
-        // Get the click detection scripts
-        Detectors = new GizmoClickDetection[3];
-        Detectors[0] = xAxisObject.GetComponent<GizmoClickDetection>();
-        Detectors[1] = yAxisObject.GetComponent<GizmoClickDetection>();
-        Detectors[2] = zAxisObject.GetComponent<GizmoClickDetection>();
+	/// <summary>
+	///     On wake up
+	/// </summary>
+	public void Awake()
+	{
 
-        // Set the same position for the target and the gizmo
-        transform.position = translateTarget.transform.position;
-    }
+		// Get the click detection scripts
+		Detectors = new GizmoClickDetection[3];
+		Detectors[0] = xAxisObject.GetComponent<GizmoClickDetection>();
+		Detectors[1] = yAxisObject.GetComponent<GizmoClickDetection>();
+		Detectors[2] = zAxisObject.GetComponent<GizmoClickDetection>();
 
-    /// <summary>
-    ///     Once per frame
-    /// </summary>
-    public void Update() {
-        for (int i = 0; i < 3; i++) {
-            if (Input.GetMouseButton(0) && Detectors[i].pressing) {
-                // Get the distance from the camera to the target (used as a scaling factor in translate)
-                float distance = Vector3.Distance(App.ActiveCamera.transform.position, translateTarget.transform.position);
-                distance = distance * 2.0f;
+		// Set the same position for the target and the gizmo
+		transform.position = translateTarget.transform.position;
+	}
 
-                // Will store translate values
-                Vector3 offset = Vector3.zero;
+	/// <summary>
+	///     Once per frame
+	/// </summary>
+	public void Update()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			if (Input.GetMouseButton(0) && Detectors[i].pressing)
+			{
+				// Get the distance from the camera to the target (used as a scaling factor in translate)
+				float distance = Vector3.Distance(App.ActiveCamera.transform.position, translateTarget.transform.position);
+				distance = distance * 2.0f;
 
-                switch (i) {
-                    // X Axis
-                    case 0:
-                        {
-                            // If the user is pressing the plane, move along Y and Z, else move along X
+				// Will store translate values
+				Vector3 offset = Vector3.zero;
 
-                            if (Detectors[i].pressingPlane) {
-                                float deltaY = Input.GetAxis("Mouse Y") * (Time.deltaTime * distance);
-                                offset = Vector3.up * deltaY;
-                                offset = new Vector3(0.0f, offset.y, 0.0f);
-                                translateTarget.transform.Translate(offset);
+				switch (i)
+				{
+					// X Axis
+					case 0:
+						{
+							// If the user is pressing the plane, move along Y and Z, else move along X
 
-                                float deltaZ = Input.GetAxis("Mouse X") * (Time.deltaTime * distance);
-                                offset = Vector3.forward * deltaZ;
-                                offset = new Vector3(0.0f, 0.0f, offset.z);
-                                translateTarget.transform.Translate(offset);
+							if (Detectors[i].pressingPlane)
+							{
+								float deltaY = Input.GetAxis("Mouse Y") * (Time.deltaTime * SPEED);
+								offset = Vector3.up * deltaY;
+								offset = new Vector3(0.0f, offset.y, 0.0f);
+								translateTarget.transform.Translate(offset);
 
-                            } else {
-                                float delta = Input.GetAxis("Mouse X") * (Time.deltaTime * distance);
-                                offset = Vector3.left * delta;
-                                offset = new Vector3(offset.x, 0.0f, 0.0f);
-                                translateTarget.transform.Translate(offset);
-                            }
-                        }
-                        break;
+								float deltaZ = Input.GetAxis("Mouse X") * (Time.deltaTime * SPEED);
+								offset = Vector3.forward * deltaZ;
+								offset = new Vector3(0.0f, 0.0f, offset.z);
+								translateTarget.transform.Translate(offset);
 
-                    // Y Axis
-                    case 1:
-                        {
-                            // If the user is pressing the plane, move along X and Z, else just move along X
+							}
+							else
+							{
+								float delta = Input.GetAxis("Mouse X") * (Time.deltaTime * SPEED);
+								offset = Vector3.left * delta;
+								offset = new Vector3(offset.x, 0.0f, 0.0f);
+								translateTarget.transform.Translate(offset);
+							}
+						}
+						break;
 
-                            if (Detectors[i].pressingPlane) {
-                                float deltaX = Input.GetAxis("Mouse X") * (Time.deltaTime * distance);
-                                offset = Vector3.left * deltaX;
-                                offset = new Vector3(offset.x, 0.0f, 0.0f);
-                                translateTarget.transform.Translate(offset);
+					// Y Axis
+					case 1:
+						{
+							// If the user is pressing the plane, move along X and Z, else just move along X
 
-                                float deltaZ = Input.GetAxis("Mouse Y") * (Time.deltaTime * distance);
-                                offset = Vector3.forward * deltaZ;
-                                offset = new Vector3(0.0f, 0.0f, -offset.z);
-                                translateTarget.transform.Translate(offset);
+							if (Detectors[i].pressingPlane)
+							{
+								float deltaX = Input.GetAxis("Mouse X") * (Time.deltaTime * SPEED);
+								offset = Vector3.left * deltaX;
+								offset = new Vector3(offset.x, 0.0f, 0.0f);
+								translateTarget.transform.Translate(offset);
 
-                            } else {
-                                float delta = Input.GetAxis("Mouse Y") * (Time.deltaTime * distance);
-                                offset = Vector3.up * delta;
-                                offset = new Vector3(0.0f, offset.y, 0.0f);
-                                translateTarget.transform.Translate(offset);
-                            }
-                        }
-                        break;
+								float deltaZ = Input.GetAxis("Mouse Y") * (Time.deltaTime * SPEED);
+								offset = Vector3.forward * deltaZ;
+								offset = new Vector3(0.0f, 0.0f, -offset.z);
+								translateTarget.transform.Translate(offset);
 
-                    // Z Axis
-                    case 2:
-                        {
-                            // If the user is pressing the plane, move along X and Y, else just move along Z
+							}
+							else
+							{
+								float delta = Input.GetAxis("Mouse Y") * (Time.deltaTime * SPEED);
+								offset = Vector3.up * delta;
+								offset = new Vector3(0.0f, offset.y, 0.0f);
+								translateTarget.transform.Translate(offset);
+							}
+						}
+						break;
 
-                            if (Detectors[i].pressingPlane) {
-                                float deltaX = Input.GetAxis("Mouse X") * (Time.deltaTime * distance);
-                                offset = Vector3.left * deltaX;
-                                offset = new Vector3(offset.x, 0.0f, 0.0f);
-                                translateTarget.transform.Translate(offset);
+					// Z Axis
+					case 2:
+						{
+							// If the user is pressing the plane, move along X and Y, else just move along Z
 
-                                float deltaY = Input.GetAxis("Mouse Y") * (Time.deltaTime * distance);
-                                offset = Vector3.up * deltaY;
-                                offset = new Vector3(0.0f, offset.y, 0.0f);
-                                translateTarget.transform.Translate(offset);
+							if (Detectors[i].pressingPlane)
+							{
+								float deltaX = Input.GetAxis("Mouse X") * (Time.deltaTime * SPEED);
+								offset = Vector3.left * deltaX;
+								offset = new Vector3(offset.x, 0.0f, 0.0f);
+								translateTarget.transform.Translate(offset);
 
-                            } else {
-                                float delta = Input.GetAxis("Mouse X") * (Time.deltaTime * distance);
-                                offset = Vector3.forward * delta;
-                                offset = new Vector3(0.0f, 0.0f, offset.z);
-                                translateTarget.transform.Translate(offset);
-                            }
-                        }
-                        break;
-                }
+								float deltaY = Input.GetAxis("Mouse Y") * (Time.deltaTime * SPEED);
+								offset = Vector3.up * deltaY;
+								offset = new Vector3(0.0f, offset.y, 0.0f);
+								translateTarget.transform.Translate(offset);
 
-                // Move the gizmo to match the target position
-                transform.position = translateTarget.transform.position;
+							}
+							else
+							{
+								float delta = Input.GetAxis("Mouse X") * (Time.deltaTime * SPEED);
+								offset = Vector3.forward * delta;
+								offset = new Vector3(0.0f, 0.0f, offset.z);
+								translateTarget.transform.Translate(offset);
+							}
+						}
+						break;
+				}
 
-                break;
-            }
-        }
-    }
+				// Move the gizmo to match the target position
+				transform.position = translateTarget.transform.position;
+
+				break;
+			}
+		}
+	}
 
 }
 // End of script.

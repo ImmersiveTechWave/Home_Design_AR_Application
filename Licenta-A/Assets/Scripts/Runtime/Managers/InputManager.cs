@@ -77,7 +77,7 @@ namespace AF
 			if (gameStateManager.IsCurrentState<AddObjectsState>() && Input.GetMouseButtonDown(0) && !IsPointerOverUIElement())
 			{
 				var ray = App.ActiveCamera.ScreenPointToRay(Input.mousePosition);
-				if (Physics.Raycast(ray, out var objectRayHit, Mathf.Infinity, LayerMask.GetMask(LayersName.OBJECT)))
+				if (Physics.Raycast(ray, out var objectRayHit, Mathf.Infinity, LayerMask.GetMask(LayersName.OBJECT, LayersName.MARGIN)))
 				{
 					var selectable = objectRayHit.collider.gameObject.GetComponentInParent<ISelectable>();
 					if (selectable != null)
