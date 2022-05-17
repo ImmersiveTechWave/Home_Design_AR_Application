@@ -17,8 +17,6 @@ namespace AF
 			button = transform.GetComponentInChildren<Button>();
 			text = transform.GetComponentInChildren<TextMeshProUGUI>();
 			screenView = FindObjectOfType<UIMainScreenScreenController>();
-			//button.onClick.AddListener(CreateObject);
-			//button.OnPointerClick
 		}
 
 		public void CreateObject()

@@ -38,7 +38,7 @@ public class GizmoTranslateScript : MonoBehaviour {
     /// <summary>
     ///     Array of detector scripts stored as [x, y, z]
     /// </summary>
-    private GizmoClickDetection[] detectors;
+    public GizmoClickDetection[] Detectors;
 
     /// <summary>
     ///     On wake up
@@ -46,10 +46,10 @@ public class GizmoTranslateScript : MonoBehaviour {
     public void Awake() {
 
         // Get the click detection scripts
-        detectors = new GizmoClickDetection[3];
-        detectors[0] = xAxisObject.GetComponent<GizmoClickDetection>();
-        detectors[1] = yAxisObject.GetComponent<GizmoClickDetection>();
-        detectors[2] = zAxisObject.GetComponent<GizmoClickDetection>();
+        Detectors = new GizmoClickDetection[3];
+        Detectors[0] = xAxisObject.GetComponent<GizmoClickDetection>();
+        Detectors[1] = yAxisObject.GetComponent<GizmoClickDetection>();
+        Detectors[2] = zAxisObject.GetComponent<GizmoClickDetection>();
 
         // Set the same position for the target and the gizmo
         transform.position = translateTarget.transform.position;
@@ -60,7 +60,7 @@ public class GizmoTranslateScript : MonoBehaviour {
     /// </summary>
     public void Update() {
         for (int i = 0; i < 3; i++) {
-            if (Input.GetMouseButton(0) && detectors[i].pressing) {
+            if (Input.GetMouseButton(0) && Detectors[i].pressing) {
 
                 // Get the distance from the camera to the target (used as a scaling factor in translate)
                 float distance = Vector3.Distance(Camera.main.transform.position, translateTarget.transform.position);
@@ -75,7 +75,7 @@ public class GizmoTranslateScript : MonoBehaviour {
                         {
                             // If the user is pressing the plane, move along Y and Z, else move along X
 
-                            if (detectors[i].pressingPlane) {
+                            if (Detectors[i].pressingPlane) {
                                 float deltaY = Input.GetAxis("Mouse Y") * (Time.deltaTime * distance);
                                 offset = Vector3.up * deltaY;
                                 offset = new Vector3(0.0f, offset.y, 0.0f);
@@ -100,7 +100,7 @@ public class GizmoTranslateScript : MonoBehaviour {
                         {
                             // If the user is pressing the plane, move along X and Z, else just move along X
 
-                            if (detectors[i].pressingPlane) {
+                            if (Detectors[i].pressingPlane) {
                                 float deltaX = Input.GetAxis("Mouse X") * (Time.deltaTime * distance);
                                 offset = Vector3.left * deltaX;
                                 offset = new Vector3(offset.x, 0.0f, 0.0f);
@@ -125,7 +125,7 @@ public class GizmoTranslateScript : MonoBehaviour {
                         {
                             // If the user is pressing the plane, move along X and Y, else just move along Z
 
-                            if (detectors[i].pressingPlane) {
+                            if (Detectors[i].pressingPlane) {
                                 float deltaX = Input.GetAxis("Mouse X") * (Time.deltaTime * distance);
                                 offset = Vector3.left * deltaX;
                                 offset = new Vector3(offset.x, 0.0f, 0.0f);

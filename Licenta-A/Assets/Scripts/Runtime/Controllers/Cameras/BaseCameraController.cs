@@ -14,6 +14,7 @@ namespace AF
 		public bool ThisIsTheMainCamera { get; set; }
 		public GameStateManager GameStateManager { get; private set; }
 		public InputController InputController { get; private set; }
+		public ObjectManager ObjectManager { get; private set; }
 
 		protected UIMainScreenScreenController MainScreen { get; private set; }
 
@@ -25,6 +26,7 @@ namespace AF
 			BaseCamera = GetComponent<Camera>();
 			GameStateManager = FindObjectOfType<GameStateManager>();
 			MainScreen = FindObjectOfType<UIMainScreenScreenController>();
+			ObjectManager = FindObjectOfType<ObjectManager>();
 			InputController = new InputController();
 			InputController.Enable();
 		}
@@ -34,6 +36,8 @@ namespace AF
 			ThisIsTheMainCamera = true;
 			BaseCamera.enabled = true;
 			App.ActiveCamera = BaseCamera;
+			ObjectManager.SetAllTranslateDetectorsCamera(BaseCamera);
+			ObjectManager.SetAllRotateDectectorsCamera(BaseCamera);
 		}
 
 		public virtual void ExitState()

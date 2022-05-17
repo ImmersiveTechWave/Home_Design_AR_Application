@@ -43,7 +43,7 @@ public class GizmoRotateScript : MonoBehaviour {
     /// <summary>
     ///     Array of detector scripts stored as [x, y, z]
     /// </summary>
-    private GizmoClickDetection[] detectors;
+    public GizmoClickDetection[] Detectors;
 
     /// <summary>
     ///     On wake up
@@ -51,10 +51,10 @@ public class GizmoRotateScript : MonoBehaviour {
     public void Awake() {
 
         // Get the click detection scripts
-        detectors = new GizmoClickDetection[3];
-        detectors[0] = xTorus.GetComponent<GizmoClickDetection>();
-        detectors[1] = yTorus.GetComponent<GizmoClickDetection>();
-        detectors[2] = zTorus.GetComponent<GizmoClickDetection>();
+        Detectors = new GizmoClickDetection[3];
+        Detectors[0] = xTorus.GetComponent<GizmoClickDetection>();
+        Detectors[1] = yTorus.GetComponent<GizmoClickDetection>();
+        Detectors[2] = zTorus.GetComponent<GizmoClickDetection>();
 
         // Set the same position for the target and the gizmo
         transform.position = rotateTarget.transform.position;
@@ -66,7 +66,7 @@ public class GizmoRotateScript : MonoBehaviour {
     public void Update() {
         for (int i = 0; i < 3; i++) {
 
-            if (Input.GetMouseButton(0) && detectors[i].pressing) {
+            if (Input.GetMouseButton(0) && Detectors[i].pressing) {
 
                 // Rotation angle
                 float delta = (Input.GetAxis("Mouse X") - Input.GetAxis("Mouse Y")) * (Time.deltaTime);

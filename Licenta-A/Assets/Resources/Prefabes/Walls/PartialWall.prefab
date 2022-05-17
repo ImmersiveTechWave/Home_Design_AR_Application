@@ -444,6 +444,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 3029913834754095584, guid: 46d385280ba6ce04d8a9e0ff27acf403,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7a7bad0fa448edd43996e226eff8979d, type: 2}
+    - target: {fileID: 5649578672511672217, guid: 46d385280ba6ce04d8a9e0ff27acf403,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7a7bad0fa448edd43996e226eff8979d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46d385280ba6ce04d8a9e0ff27acf403, type: 3}
 --- !u!4 &4289429555610398680 stripped
