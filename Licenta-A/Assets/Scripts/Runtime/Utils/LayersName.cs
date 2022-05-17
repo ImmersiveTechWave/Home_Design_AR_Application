@@ -5,5 +5,6 @@ namespace AF
 		public const string WALL = "Wall";
 		public const string PLANE = "Plane";
 		public const string MARGIN = "Margin";
+		public const string OBJECT = "Object";
 	}
 }

@@ -81,8 +81,9 @@ namespace AF.UI
 				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.WHITE_COLOR;
 				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.BLUE_COLOR;
 				App.GizmoType = GizmoType.Rotate;
-				objectManager.SetAllTranslateGizmoState(false);
-				objectManager.SetAllRotateGizmoState(true);
+
+				App.SelectedObjectController?.SetTranslateGizmoState(false);
+				App.SelectedObjectController?.SetRotateGizmoState(true);
 			}
 			else if (App.GizmoType == GizmoType.Rotate)
 			{
@@ -100,8 +101,9 @@ namespace AF.UI
 				ScreenView.UIGizmoHolderRotateButtonImage.color = ColorUtils.WHITE_COLOR;
 				ScreenView.UIGizmoHolderTranslateButtonImage.color = ColorUtils.BLUE_COLOR;
 				App.GizmoType = GizmoType.Translate;
-				objectManager.SetAllRotateGizmoState(false);
-				objectManager.SetAllTranslateGizmoState(true);
+
+				App.SelectedObjectController?.SetTranslateGizmoState(true);
+				App.SelectedObjectController?.SetRotateGizmoState(false);
 			}
 			else if (App.GizmoType == GizmoType.Translate)
 			{

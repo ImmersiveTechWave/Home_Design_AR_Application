@@ -15,10 +15,11 @@ namespace AF
 
 		private void Update()
 		{
-			Select();
+			SelectWall();
+			SelectObject();
 		}
 
-		private void Select()
+		private void SelectWall()
 		{
 			if (gameStateManager.IsCurrentState<EditWallState>() && Input.GetMouseButtonDown(0) && !IsPointerOverUIElement())
 			{
@@ -66,6 +67,31 @@ namespace AF
 					{
 						App.SelectedWall.Deselect();
 						App.SelectedWall = null;
+					}
+				}
+			}
+		}
+
+		private void SelectObject()
+		{
+			if (gameStateManager.IsCurrentState<AddObjectsState>() && Input.GetMouseButtonDown(0) && !IsPointerOverUIElement())
+			{
+				var ray = App.ActiveCamera.ScreenPointToRay(Input.mousePosition);
+				if (Physics.Raycast(ray, out var objectRayHit, Mathf.Infinity, LayerMask.GetMask(LayersName.OBJECT)))
+				{
+					var selectable = objectRayHit.collider.gameObject.GetComponentInParent<ISelectable>();
+					if (selectable != null)
+					{
+						var objectController = objectRayHit.collider.gameObject.GetComponentInParent<ObjectController>();
+						objectController?.Select();
+					}
+				}
+				else
+				{
+					if (App.SelectedObjectController != null)
+					{
+						App.SelectedObjectController.Deselect();
+						App.SelectedObjectController = null;
 					}
 				}
 			}
