@@ -72,6 +72,12 @@ namespace AF.UI
 
 			ScreenView.UIGizmoHolderRotateButton.onClick.AddListener(SetRotateGizmoStatus);
 			ScreenView.UIGizmoHolderTranslateButton.onClick.AddListener(SetTranslateGizmoStatus);
+			ScreenView.UIGizmoHolderDeleteButton.onClick.AddListener(DeleteSelectedObject);
+		}
+
+		private void DeleteSelectedObject()
+		{
+			App.SelectedObjectController?.DeleteObject();
 		}
 
 		private void SetRotateGizmoStatus()

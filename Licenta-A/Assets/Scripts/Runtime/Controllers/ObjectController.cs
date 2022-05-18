@@ -47,6 +47,12 @@ namespace AF
 			}
 		}
 
+		public void DeleteObject()
+		{
+			Deselect();
+			Destroy(gameObject);
+		}
+
 		public void SetTranslateDectectorsCamera(Camera camera)
 		{
 			gizmoTranslate.Detectors[0].gizmoCamera = camera;

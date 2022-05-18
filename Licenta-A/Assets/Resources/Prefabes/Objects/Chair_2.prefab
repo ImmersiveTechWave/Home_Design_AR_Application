@@ -1919,7 +1919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f750c4df342c1324ba9f04b94b19ffca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 150
+  rotationSpeed: 100
   xTorus: {fileID: 3847042169608302494}
   yTorus: {fileID: 6059951535416069612}
   zTorus: {fileID: 1642283887180611864}

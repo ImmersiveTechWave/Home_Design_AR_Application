@@ -89,6 +89,8 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 	public Image UIGizmoHolderRotateButtonImage{ get; protected set; }
 	public Button UIGizmoHolderTranslateButton{ get; protected set; }
 	public Image UIGizmoHolderTranslateButtonImage{ get; protected set; }
+	public Button UIGizmoHolderDeleteButton{ get; protected set; }
+	public Image UIGizmoHolderDeleteButtonImage{ get; protected set; }
 
 	private void Awake()
 	{
@@ -173,6 +175,8 @@ public class UIMainScreenScreenComponents : MonoBehaviour
 		UIGizmoHolderRotateButtonImage = transform.Find("GizmoHolder/RotateButton/Image").GetComponent<Image>();
 		UIGizmoHolderTranslateButton = transform.Find("GizmoHolder/TranslateButton").GetComponent<Button>();
 		UIGizmoHolderTranslateButtonImage = transform.Find("GizmoHolder/TranslateButton/Image").GetComponent<Image>();
+		UIGizmoHolderDeleteButton = transform.Find("GizmoHolder/DeleteButton").GetComponent<Button>();
+		UIGizmoHolderDeleteButtonImage = transform.Find("GizmoHolder/DeleteButton/Image").GetComponent<Image>();
 	}
 }
 }
