@@ -38,6 +38,7 @@ namespace AF
 				MainScreen.ScreenView.UIAddObjectsPanel.gameObject.SetActive(status);
 				MainScreen.ScreenView.UIGizmoHolderRotateButton.gameObject.SetActive(status);
 				MainScreen.ScreenView.UIGizmoHolderTranslateButton.gameObject.SetActive(status);
+				MainScreen.ScreenView.UIGizmoHolderDeleteButton.gameObject.SetActive(status);
 			}
 		}
 
