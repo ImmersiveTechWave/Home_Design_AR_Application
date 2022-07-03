@@ -2,4 +2,4 @@
 
 ## Create a wall.
 
-<img src="https://i.imgur.com/k3bToLB.png" width="800" height="400" />
+<img src="https://i.imgur.com/k3bToLB.png" width="800" height="500" />
