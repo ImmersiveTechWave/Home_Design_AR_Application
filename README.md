@@ -1,3 +1,3 @@
 # Licenta-A
 
-![This is an image](https://imgur.com/k3bToLB)
+![This is an image](https://i.imgur.com/r2eSWbT.jpg)
