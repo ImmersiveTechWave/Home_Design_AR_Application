@@ -283,8 +283,6 @@ Shader "Sunfall/Forcefield"
 			CBUFFER_END
 			sampler2D _Texture;
 			sampler2D _Texture_Triplanar;
-			uniform float4 _CameraDepthTexture_TexelSize;
-
 
 			inline float4 TriplanarSampling156( sampler2D topTexMap, float3 worldPos, float3 worldNormal, float falloff, float2 tiling, float3 normalScale, float3 index )
 			{
@@ -776,8 +774,6 @@ Shader "Sunfall/Forcefield"
 			CBUFFER_END
 			sampler2D _Texture;
 			sampler2D _Texture_Triplanar;
-			uniform float4 _CameraDepthTexture_TexelSize;
-
 
 			inline float4 TriplanarSampling156( sampler2D topTexMap, float3 worldPos, float3 worldNormal, float falloff, float2 tiling, float3 normalScale, float3 index )
 			{
@@ -1096,8 +1092,6 @@ Shader "Sunfall/Forcefield"
 			CBUFFER_END
 			sampler2D _Texture;
 			sampler2D _Texture_Triplanar;
-			uniform float4 _CameraDepthTexture_TexelSize;
-
 
 			inline float4 TriplanarSampling156( sampler2D topTexMap, float3 worldPos, float3 worldNormal, float falloff, float2 tiling, float3 normalScale, float3 index )
 			{
@@ -1416,8 +1410,6 @@ Shader "Sunfall/Forcefield"
 			CBUFFER_END
 			sampler2D _Texture;
 			sampler2D _Texture_Triplanar;
-			uniform float4 _CameraDepthTexture_TexelSize;
-
 
 			inline float4 TriplanarSampling156( sampler2D topTexMap, float3 worldPos, float3 worldNormal, float falloff, float2 tiling, float3 normalScale, float3 index )
 			{
